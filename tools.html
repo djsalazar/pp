@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Herramientas de IA: Innovación en Educación y Gestión Judicial</title>
+    <style>
+        :root {
+            --primary-color: #003366; /* Azul oscuro institucional */
+            --secondary-color: #0056b3; /* Azul medio */
+            --accent-color: #e87722; /* Naranja/dorado para acentos */
+            --light-gray-color: #f4f4f4;
+            --dark-gray-color: #333;
+            --text-color: #333;
+            --card-bg-color: #ffffff;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-gray-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        header, footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        header h1, footer p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .introduction {
+            background-color: var(--card-bg-color);
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .introduction h2 {
+            color: var(--primary-color);
+        }
+
+        .filters {
+            background-color: var(--card-bg-color);
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filters label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .filters select, .filters input[type="text"] {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+        .filters button {
+            padding: 8px 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: background-color 0.3s ease;
+        }
+
+        .filters button:hover {
+            background-color: #d6600f;
+        }
+
+        .tool-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg-color);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+
+        .tool-card-header {
+            padding: 15px 20px;
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .tool-card-header h3 {
+            margin: 0;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+        }
+        .tool-card-header img.logo { /* Placeholder for logo */
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
+            border-radius: 4px;
+            background-color: #fff; /* Placeholder bg */
+        }
+
+
+        .tool-card-body {
+            padding: 15px 20px;
+            flex-grow: 1;
+        }
+
+        .tool-card-body p {
+            margin-top: 0;
+        }
+
+        .tool-card .licencia {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            font-weight: bold;
+            margin-top: 10px;
+            color: white;
+        }
+
+        .licencia.gratuita { background-color: #28a745; }
+        .licencia.freemium { background-color: #ffc107; color: #333;}
+        .licencia.pago { background-color: #dc3545; }
+
+        .tool-card-footer {
+            padding: 10px 20px;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            text-align: right;
+        }
+
+        .tool-card a.tool-link {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 8px 15px;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .tool-card a.tool-link:hover {
+            background-color: #d6600f;
+        }
+
+        .collapsible-section {
+            margin-top: 15px;
+        }
+
+        .collapsible-trigger {
+            background-color: #e9ecef;
+            color: var(--secondary-color);
+            cursor: pointer;
+            padding: 10px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .collapsible-trigger:hover {
+            background-color: #dde2e6;
+        }
+
+        .collapsible-trigger::after {
+            content: '\\002B'; /* Plus sign */
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .collapsible-trigger.active::after {
+            content: "\\2212"; /* Minus sign */
+        }
+
+        .collapsible-content {
+            padding: 0 15px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            background-color: #fdfdfd;
+            border-radius: 0 0 4px 4px;
+            border: 1px solid #e9ecef;
+            border-top: none;
+        }
+        .collapsible-content ul {
+            padding-left: 20px;
+        }
+        .collapsible-content ul li strong {
+            color: var(--secondary-color);
+        }
+        .pros-cons {
+            margin-top: 10px;
+        }
+        .pros-cons strong {
+            color: var(--secondary-color);
+        }
+        .pros-cons ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .pros-cons ul li::before {
+            margin-right: 8px;
+            font-weight: bold;
+        }
+        .pros-cons .pros li::before {
+            content: '\\2713'; /* Check mark */
+            color: green;
+        }
+        .pros-cons .cons li::before {
+            content: '\\2717'; /* X mark */
+            color: red;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .filters {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .filters select, .filters input[type="text"], .filters button {
+                width: 100%;
+                box-sizing: border-box; /* Ensures padding doesn't add to width */
+            }
+            header h1, footer p {
+                font-size: 1em;
+            }
+        }
+        @media (max-width: 480px) {
+            .tool-grid {
+                grid-template-columns: 1fr; /* Stack cards on very small screens */
+            }
+            .container {
+                width: 95%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Escuela de Estudios Judiciales del Organismo Judicial de Guatemala</h1>
+        <p>David Salazar PNUD | UNV</p>
+    </header>
+
+    <div class="container">
+        <section class="introduction">
+            <h2>Explorando la Inteligencia Artificial: Herramientas para la Innovación en la Educación y Gestión Judicial</h2>
+            <p>Bienvenido a este catálogo de herramientas de Inteligencia Artificial (IA) seleccionadas para potenciar la educación y optimizar los procesos administrativos dentro del ámbito judicial y académico. La IA ofrece un vasto potencial para transformar la manera en que enseñamos, aprendemos, gestionamos recursos y desarrollamos nuevas soluciones. Este recurso está diseñado para ser una guía práctica y relevante para docentes, personal administrativo, desarrolladores de la gerencia de informática y planificadores de presupuesto.</p>
+            <p>Explore las herramientas, descubra sus aplicaciones y considere cómo pueden integrarse en su trabajo diario para fomentar la eficiencia, la innovación y la excelencia.</p>
+        </section>
+
+        <div class="filters">
+            <label for="searchTool">Buscar por nombre:</label>
+            <input type="text" id="searchTool" placeholder="Ej: Canva, Notion...">
+
+            <label for="filterArea">Filtrar por Área:</label>
+            <select id="filterArea">
+                <option value="todos">Todas las Áreas</option>
+                <option value="educacion">Educación y Contenido</option>
+                <option value="administrativo">Procesos Administrativos</option>
+                <option value="desarrollo">Desarrollo/IT</option>
+                <option value="analisis">Análisis de Datos/Presupuesto</option>
+            </select>
+
+            <label for="filterLicencia">Filtrar por Licencia:</label>
+            <select id="filterLicencia">
+                <option value="todos">Todas las Licencias</option>
+                <option value="gratuita">Gratuita</option>
+                <option value="freemium">Freemium</option>
+                <option value="pago">De Pago</option>
+            </select>
+            <button id="resetFilters">Limpiar Filtros</button>
+        </div>
+
+        <div class="tool-grid" id="toolGrid">
+            </div>
+    </div>
+
+    <footer>
+        <p>Escuela de Estudios Judiciales del Organismo Judicial de Guatemala</p>
+        <p>David Salazar PNUD | UNV - Mayo 2025</p>
+    </footer>
+
+    <script>
+        const toolsData = [
+            // Herramientas Educacion y Contenido
+            {
+                name: "Canva (con IA)",
+                logoPlaceholder: "🎨",
+                description: "Plataforma de diseño gráfico con funciones de IA como 'Magic Write' para texto y 'Magic Design' para presentaciones y diseños.",
+                link: "https://www.canva.com/",
+                areas: ["educacion", "administrativo"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Docentes:</strong> Crear presentaciones interactivas y visualmente atractivas para clases sobre legislación, ética judicial. Diseñar infografías sobre procesos judiciales complejos.</li>
+                    <li><strong>Administradores:</strong> Crear comunicados internos, materiales de capacitación para nuevo personal judicial, informes visuales.</li>
+                </ul>`,
+                practica: "Diseñar una infografía sobre los 'Principios Éticos del Juez' utilizando las plantillas y el asistente de IA de Canva.",
+                pros: ["Muy fácil de usar", "Gran cantidad de plantillas", "Funciones de IA que agilizan el diseño", "Colaborativo"],
+                contras: ["Funciones de IA más avanzadas pueden ser Pro", "IA generativa de texto requiere revisión"]
+            },
+            {
+                name: "Gamma.app",
+                logoPlaceholder: "📄",
+                description: "Crea presentaciones, documentos y páginas web a partir de texto o prompts utilizando IA. Generación rápida de contenido estructurado.",
+                link: "https://gamma.app/",
+                areas: ["educacion", "administrativo"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Docentes:</strong> Generar rápidamente borradores de presentaciones sobre nuevas leyes o jurisprudencia. Crear guías de estudio interactivas.</li>
+                    <li><strong>Administradores:</strong> Elaborar propuestas de proyectos, manuales de procedimientos, o informes preliminares.</li>
+                </ul>`,
+                practica: "Generar una presentación sobre 'El Impacto de la IA en el Sistema Judicial' ingresando los puntos clave.",
+                pros: ["Muy rápido para generar borradores", "Interfaz moderna", "Permite personalización"],
+                contras: ["Puede requerir ajustes significativos para contenido especializado", "Limitado en créditos en versión gratuita"]
+            },
+            {
+                name: "Google Slides (con IA)",
+                logoPlaceholder: "📊",
+                description: "Herramienta de presentaciones de Google, potenciada con complementos de IA para diseño, transcripción o generación de contenido.",
+                link: "https://www.google.com/slides/about/",
+                areas: ["educacion", "administrativo"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita",
+                casosUso: `<ul>
+                    <li><strong>Docentes:</strong> Crear presentaciones colaborativas. Usar IA para sugerir diseños o resumir texto.</li>
+                    <li><strong>Administradores:</strong> Preparar informes y presentaciones institucionales.</li>
+                </ul>`,
+                practica: "Crear una presentación sobre un tema legal y explorar complementos de IA para mejorar su diseño o generar ideas de contenido.",
+                pros: ["Gratuito", "Colaborativo", "Familiar para muchos usuarios", "Ecosistema de complementos"],
+                contras: ["Funciones de IA dependen de complementos de terceros (pueden tener costos)"]
+            },
+            {
+                name: "Perplexity AI",
+                logoPlaceholder: "❓",
+                description: "Motor de búsqueda conversacional que cita fuentes. Excelente para investigación y comprensión de temas complejos.",
+                link: "https://www.perplexity.ai/",
+                areas: ["educacion", "administrativo", "analisis"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Docentes y Jueces/Magistrados:</strong> Investigar antecedentes de casos, doctrina legal, o comprender implicaciones de nuevas tecnologías en el derecho.</li>
+                    <li><strong>Administradores:</strong> Investigar mejores prácticas en gestión educativa o administrativa.</li>
+                </ul>`,
+                practica: "Realizar una consulta compleja sobre 'la admisibilidad de pruebas generadas por IA en procesos judiciales' y analizar las fuentes.",
+                pros: ["Proporciona fuentes directas", "Bueno para investigación", "Interfaz conversacional"],
+                contras: ["Puede malinterpretar consultas muy nicho", "Límites en versión gratuita para funciones avanzadas"]
+            },
+            {
+                name: "Scribens",
+                logoPlaceholder: "✍️",
+                description: "Corrector gramatical y de estilo avanzado que utiliza IA para mejorar la redacción de textos.",
+                link: "https://www.scribens.com/",
+                areas: ["educacion", "administrativo"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Todos:</strong> Mejorar la calidad de documentos legales, correos electrónicos, materiales educativos, y cualquier comunicación escrita.</li>
+                </ul>`,
+                practica: "Tomar un borrador de un documento y pasarlo por Scribens para identificar mejoras.",
+                pros: ["Muy bueno para corrección gramatical y de estilo", "Sugerencias detalladas", "Soporta varios idiomas"],
+                contras: ["Versión gratuita con limitaciones en longitud o funciones avanzadas"]
+            },
+            {
+                name: "Google Gemini (Bard)",
+                logoPlaceholder: "✨",
+                description: "Modelo de lenguaje grande de Google para generar texto, traducir, escribir contenido creativo y responder preguntas.",
+                link: "https://gemini.google.com/",
+                areas: ["educacion", "administrativo", "desarrollo"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita",
+                casosUso: `<ul>
+                    <li><strong>Docentes:</strong> Brainstorming, generar ejemplos de casos hipotéticos, resumir textos legales.</li>
+                    <li><strong>Administradores:</strong> Redactar borradores de correos, comunicados.</li>
+                    <li><strong>Desarrolladores:</strong> Generar fragmentos de código, explicar conceptos de programación.</li>
+                </ul>`,
+                practica: "Pedirle a Gemini que explique un concepto legal complejo en términos sencillos.",
+                pros: ["Versátil", "Buena capacidad de generación de texto", "Acceso a información actualizada"],
+                contras: ["Puede generar información incorrecta (requiere verificación)", "La 'creatividad' a veces necesita ser guiada"]
+            },
+            // Herramientas Procesos Administrativos y Productividad
+            {
+                name: "Notion (con Notion AI)",
+                logoPlaceholder: "📝",
+                description: "Espacio de trabajo todo-en-uno con IA integrada para generación de texto, resumen, lluvia de ideas, etc.",
+                link: "https://www.notion.so/",
+                areas: ["administrativo", "educacion", "analisis"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Administradores:</strong> Planificar y seguir proyectos, crear bases de conocimiento, gestionar documentación de cursos.</li>
+                    <li><strong>Docentes:</strong> Organizar materiales de clase, notas de investigación, calendarios.</li>
+                    <li><strong>Todos:</strong> Gestión de tareas personales y colaborativas.</li>
+                </ul>`,
+                practica: "Crear una base de datos en Notion para el seguimiento de módulos de un curso y usar Notion AI para generar descripciones.",
+                pros: ["Extremadamente flexible y personalizable", "Potente para organización", "IA integrada útil"],
+                contras: ["Curva de aprendizaje pronunciada", "Notion AI con límite de usos gratuitos"]
+            },
+            {
+                name: "Trello (con Butler)",
+                logoPlaceholder: "📋",
+                description: "Herramienta de gestión de proyectos Kanban con automatizaciones 'Butler' para flujos de trabajo.",
+                link: "https://trello.com/",
+                areas: ["administrativo", "analisis"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Administradores:</strong> Gestionar flujo de aprobación de documentos, organizar planificación de eventos, seguir iniciativas.</li>
+                    <li><strong>Planificación de Presupuesto:</strong> Seguir etapas de elaboración y aprobación del presupuesto.</li>
+                </ul>`,
+                practica: "Crear un tablero para 'Organización de Seminario Web' y configurar una automatización para notificaciones.",
+                pros: ["Muy intuitivo y visual", "Excelente para trabajo en equipo", "Automatizaciones ahorran tiempo"],
+                contras: ["Automatizaciones complejas pueden requerir versión de pago", "No es IA generativa, sino de procesos"]
+            },
+            {
+                name: "Zapier / Make",
+                logoPlaceholder: "🔗",
+                description: "Plataformas de automatización que conectan aplicaciones web para crear flujos de trabajo automatizados.",
+                link: "https://zapier.com/",
+                link2: "https://www.make.com/",
+                areas: ["administrativo", "desarrollo"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Administradores:</strong> Automatizar envío de recordatorios, sincronizar inscripciones.</li>
+                    <li><strong>Gerencia de Informática:</strong> Integrar alertas de sistemas con herramientas de comunicación.</li>
+                </ul>`,
+                practica: "Crear automatización: correo con asunto específico en Gmail crea tarea en Trello.",
+                pros: ["Conectan miles de apps", "Ahorran tiempo en tareas repetitivas", "Potentes"],
+                contras: ["Curva de aprendizaje para flujos complejos", "Versiones gratuitas con limitaciones"]
+            },
+            {
+                name: "Otter.ai / Fireflies.ai",
+                logoPlaceholder: "🎙️",
+                description: "Servicios de transcripción automática de audio y video a texto utilizando IA. Fireflies se integra con videollamadas.",
+                link: "https://otter.ai/",
+                link2: "https://fireflies.ai/",
+                areas: ["educacion", "administrativo"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Docentes:</strong> Transcribir clases grabadas para materiales de apoyo.</li>
+                    <li><strong>Administradores:</strong> Generar actas de reuniones, transcribir entrevistas.</li>
+                    <li><strong>Jueces/Magistrados:</strong> Transcribir audiencias (donde sea permitido y ético).</li>
+                </ul>`,
+                practica: "Grabar un audio corto y usar una de las herramientas para transcribirlo y resumirlo.",
+                pros: ["Ahorran tiempo en transcripción", "Buena precisión", "Identifican hablantes"],
+                contras: ["Precisión varía con calidad de audio y acentos", "Versiones gratuitas con límites de minutos"]
+            },
+            // Herramientas Gerencia de Informática y Desarrollo
+            {
+                name: "GitHub Copilot",
+                logoPlaceholder: "💻",
+                description: "Asistente de programación basado en IA que sugiere código directamente en el editor.",
+                link: "https://github.com/features/copilot",
+                areas: ["desarrollo"],
+                licencia: "pago",
+                licenciaTexto: "De Pago",
+                casosUso: `<ul>
+                    <li><strong>Desarrolladores:</strong> Acelerar desarrollo de prototipos, escribir scripts, aprender nuevos lenguajes. Convertir prototipos de papel a código V0.</li>
+                </ul>`,
+                practica: "Para un desarrollador, intentar crear una función simple usando las sugerencias de Copilot.",
+                pros: ["Aumenta velocidad de codificación", "Ayuda a superar bloqueos", "Bueno para aprender"],
+                contras: ["Requiere suscripción", "Código sugerido necesita revisión cuidadosa", "Puede generar código no óptimo"]
+            },
+            {
+                name: "Replit (con Ghostwriter AI)",
+                logoPlaceholder: "🌐",
+                description: "IDE en línea con 'Ghostwriter', un asistente de IA para generar, explicar y depurar código.",
+                link: "https://replit.com/",
+                areas: ["desarrollo", "educacion"],
+                licencia: "freemium",
+                licenciaTexto: "Freemium",
+                casosUso: `<ul>
+                    <li><strong>Desarrolladores:</strong> Prototipar rápidamente apps web o scripts. Usar Ghostwriter para ayuda con algoritmos.</li>
+                    <li><strong>Docentes (de informática):</strong> Plataforma para enseñar programación.</li>
+                </ul>`,
+                practica: "Crear un 'Repl' en Python y pedir a Ghostwriter que genere un script que lea un CSV.",
+                pros: ["Accesible desde navegador", "Soporta muchos lenguajes", "Funciones de IA integradas", "Colaborativo"],
+                contras: ["Ghostwriter es premium", "Rendimiento limitado para proyectos grandes en plan gratuito"]
+            },
+            {
+                name: "Figma (con plugins de IA)",
+                logoPlaceholder: "✒️",
+                description: "Herramienta de diseño UI/UX colaborativa. Plugins de IA para generar maquetas, contenido de relleno, etc.",
+                link: "https://www.figma.com/",
+                areas: ["desarrollo", "administrativo"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita (plugins varían)",
+                casosUso: `<ul>
+                    <li><strong>Desarrolladores/Diseñadores:</strong> Crear prototipos interactivos de aplicaciones. Usar IA para generar ideas de diseño.</li>
+                </ul>`,
+                practica: "Diseñar una pantalla simple de una app y explorar plugins de IA para generar datos de ejemplo.",
+                pros: ["Excelente para diseño UI/UX colaborativo", "Gran comunidad", "Muchos plugins"],
+                contras: ["IA depende de plugins de terceros (pueden tener costos)"]
+            },
+             {
+                name: "Diagrams.net (Draw.io)",
+                logoPlaceholder: "🔗",
+                description: "Herramienta gratuita para crear diagramas. Extensiones pueden permitir IA de texto a diagrama.",
+                link: "https://app.diagrams.net/",
+                areas: ["desarrollo", "administrativo", "educacion"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita",
+                casosUso: `<ul>
+                    <li><strong>Gerencia de Informática:</strong> Modelar arquitecturas de sistemas, flujos de datos.</li>
+                    <li><strong>Administradores:</strong> Mapear procesos administrativos.</li>
+                    <li><strong>Docentes:</strong> Crear diagramas para explicar conceptos.</li>
+                </ul>`,
+                practica: "Describir un proceso simple y ver si se puede generar un diagrama básico.",
+                pros: ["Completamente gratuita", "Versátil para todo tipo de diagramas", "Integraciones"],
+                contras: ["Generación por IA puede ser vía herramientas/sintaxis externas (Mermaid)"]
+            },
+            // Herramientas Análisis de Datos y Planificación de Presupuesto
+            {
+                name: "Google Sheets / MS Excel (con IA)",
+                logoPlaceholder: "📈",
+                description: "Hojas de cálculo con funciones de IA para análisis predictivo básico, limpieza de datos inteligente y consultas en lenguaje natural.",
+                link: "https://www.google.com/sheets/about/",
+                areas: ["analisis", "administrativo"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita (Sheets) / Pago (Excel)",
+                casosUso: `<ul>
+                    <li><strong>Planificación de Presupuesto:</strong> Analizar gastos históricos, crear proyecciones, identificar tendencias.</li>
+                    <li><strong>Administradores:</strong> Analizar datos de rendimiento estudiantil, encuestas.</li>
+                </ul>`,
+                practica: "Tomar datos de gastos y usar 'Analizar Datos' (Excel) o 'Explorar' (Sheets) para insights.",
+                pros: ["Ampliamente disponibles", "Potentes para análisis numérico", "Funciones de IA facilitan descubrimiento"],
+                contras: ["Capacidades de IA más de asistencia", "Pueden requerir conocimientos de fórmulas"]
+            },
+            {
+                name: "Tableau Public / Power BI Desktop",
+                logoPlaceholder: "📊",
+                description: "Herramientas líderes en visualización de datos para crear dashboards interactivos e informes.",
+                link: "https://public.tableau.com/",
+                link2: "https://powerbi.microsoft.com/desktop/",
+                areas: ["analisis", "administrativo", "desarrollo"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita (versiones Desktop/Public)",
+                casosUso: `<ul>
+                    <li><strong>Planificación de Presupuesto:</strong> Dashboards para ejecución presupuestaria.</li>
+                    <li><strong>Administradores:</strong> Visualizar tendencias en matrícula, eficiencia de procesos.</li>
+                    <li><strong>Gerencia de Informática:</strong> Dashboards de rendimiento de sistemas.</li>
+                </ul>`,
+                practica: "Conectar un CSV y crear una visualización simple (ej. gráfico de barras).",
+                pros: ["Muy potentes para visualización", "Informes interactivos y atractivos"],
+                contras: ["Curva de aprendizaje", "Versiones completas/empresariales de pago"]
+            },
+            {
+                name: "Orange Data Mining",
+                logoPlaceholder: "🍊",
+                description: "Plataforma open-source para machine learning y minería de datos con interfaz de programación visual.",
+                link: "https://orangedatamining.com/",
+                areas: ["analisis", "desarrollo"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita (Open Source)",
+                casosUso: `<ul>
+                    <li><strong>Planificación de Presupuesto / Administradores:</strong> Realizar análisis predictivos (deserción estudiantil, sentimiento).</li>
+                    <li><strong>Gerencia de Informática:</strong> Análisis de logs para detección de anomalías.</li>
+                </ul>`,
+                practica: "Cargar datos y aplicar un algoritmo de clasificación simple (árbol de decisión).",
+                pros: ["Gratuito y open source", "Interfaz visual intuitiva para ML", "No requiere programación"],
+                contras: ["Menos flexible que programación directa para tareas muy personalizadas", "Requiere comprensión de conceptos ML"]
+            },
+            {
+                name: "ChatGPT (Advanced Data Analysis)",
+                logoPlaceholder: "💬",
+                description: "Modelo de OpenAI. Versión Plus con 'Advanced Data Analysis' permite subir archivos y pedir análisis, gráficos y código.",
+                link: "https://chat.openai.com/",
+                areas: ["analisis", "desarrollo", "educacion", "administrativo"],
+                licencia: "pago",
+                licenciaTexto: "De Pago (Plus)",
+                casosUso: `<ul>
+                    <li><strong>Planificación de Presupuesto:</strong> Cargar datos presupuestarios y pedir análisis, visualizaciones.</li>
+                    <li><strong>Administradores:</strong> Analizar resultados de encuestas, datos de rendimiento.</li>
+                    <li><strong>Gerencia de Informática:</strong> Analizar logs, generar scripts.</li>
+                </ul>`,
+                practica: "Subir un CSV y pedir a ChatGPT que calcule estadísticas y genere un histograma.",
+                pros: ["Potente para análisis conversacional", "Genera código y visualizaciones", "Versátil"],
+                contras: ["Requiere suscripción Plus", "Cuidado con privacidad de datos subidos"]
+            },
+            // Herramientas Adicionales
+            {
+                name: "Google Forms + IA en Sheets",
+                logoPlaceholder: "📝",
+                description: "Google Forms para encuestas. Análisis potenciado con IA en Google Sheets (Explorar) o exportando datos.",
+                link: "https://www.google.com/forms/about/",
+                areas: ["educacion", "administrativo", "analisis"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita",
+                casosUso: `<ul>
+                    <li><strong>Docentes:</strong> Crear evaluaciones formativas, encuestas de retroalimentación.</li>
+                    <li><strong>Administradores:</strong> Recopilar información para planificación, encuestas de clima laboral.</li>
+                </ul>`,
+                practica: "Crear encuesta y analizar respuestas abiertas con 'Explorar' en Sheets.",
+                pros: ["Gratuito", "Fácil de usar", "Integración con ecosistema Google"],
+                contras: ["Análisis IA directo en Forms limitado; requiere Sheets u otra herramienta"]
+            },
+            {
+                name: "Semantic Scholar / Connected Papers",
+                logoPlaceholder: "📚",
+                description: "Motores de búsqueda académicos y herramientas de visualización de citas que usan IA para descubrir literatura científica.",
+                link: "https://www.semanticscholar.org/",
+                link2: "https://www.connectedpapers.com/",
+                areas: ["educacion", "analisis"],
+                licencia: "gratuita",
+                licenciaTexto: "Gratuita",
+                casosUso: `<ul>
+                    <li><strong>Docentes, Jueces/Magistrados (investigación):</strong> Encontrar artículos sobre derecho y tecnología, IA en la justicia. Entender panorama de investigación.</li>
+                </ul>`,
+                practica: "Buscar artículo sobre 'IA y Ética Judicial' y explorar 'Connected Papers'.",
+                pros: ["Excelentes para investigación académica", "Ayudan a descubrir literatura relevante", "Visualizan conexiones"],
+                contras: ["Muy enfocados en ámbito académico/científico"]
+            }
+        ];
+
+        const toolGrid = document.getElementById('toolGrid');
+        const searchInput = document.getElementById('searchTool');
+        const areaFilter = document.getElementById('filterArea');
+        const licenciaFilter = document.getElementById('filterLicencia');
+        const resetFiltersButton = document.getElementById('resetFilters');
+
+        function renderTools(toolsToRender) {
+            toolGrid.innerHTML = ''; // Limpiar grid actual
+            toolsToRender.forEach(tool => {
+                const card = document.createElement('div');
+                card.className = 'tool-card';
+                card.dataset.name = tool.name.toLowerCase();
+                tool.areas.forEach(area => card.dataset[area] = 'true');
+                card.dataset.licencia = tool.licencia;
+
+                let linksHtml = `<a href="${tool.link}" target="_blank" class="tool-link">Visitar Sitio</a>`;
+                if (tool.link2) {
+                    linksHtml += ` <a href="${tool.link2}" target="_blank" class="tool-link">Visitar Sitio 2</a>`;
+                }
+
+                card.innerHTML = `
+                    <div class="tool-card-header">
+                        <h3>${tool.logoPlaceholder ? `<span class="logo" role="img" aria-label="logo icon">${tool.logoPlaceholder}</span>` : ''}${tool.name}</h3>
+                    </div>
+                    <div class="tool-card-body">
+                        <p>${tool.description}</p>
+                        <span class="licencia ${tool.licencia}">${tool.licenciaTexto}</span>
+
+                        <div class="collapsible-section">
+                            <button type="button" class="collapsible-trigger">Casos de Uso</button>
+                            <div class="collapsible-content">
+                                ${tool.casosUso}
+                            </div>
+                        </div>
+                        <div class="collapsible-section">
+                            <button type="button" class="collapsible-trigger">Práctica Sugerida</button>
+                            <div class="collapsible-content">
+                                <p>${tool.practica}</p>
+                            </div>
+                        </div>
+                        <div class="collapsible-section">
+                            <button type="button" class="collapsible-trigger">Pros y Contras</button>
+                            <div class="collapsible-content">
+                                <div class="pros-cons">
+                                    <strong class="pros-title">Pros:</strong>
+                                    <ul class="pros">
+                                        ${tool.pros.map(pro => `<li>${pro}</li>`).join('')}
+                                    </ul>
+                                    <strong class="cons-title">Contras:</strong>
+                                    <ul class="cons">
+                                        ${tool.contras.map(con => `<li>${con}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tool-card-footer">
+                        ${linksHtml}
+                    </div>
+                `;
+                toolGrid.appendChild(card);
+            });
+            addCollapsibleEventListeners();
+        }
+
+        function filterTools() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedArea = areaFilter.value;
+            const selectedLicencia = licenciaFilter.value;
+
+            const filteredTools = toolsData.filter(tool => {
+                const matchesSearch = tool.name.toLowerCase().includes(searchTerm);
+                const matchesArea = selectedArea === 'todos' || tool.areas.includes(selectedArea);
+                const matchesLicencia = selectedLicencia === 'todos' || tool.licencia === selectedLicencia;
+                return matchesSearch && matchesArea && matchesLicencia;
+            });
+            renderTools(filteredTools);
+        }
+
+        function addCollapsibleEventListeners() {
+            const collapsibles = document.querySelectorAll('.collapsible-trigger');
+            collapsibles.forEach(collapsible => {
+                collapsible.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    const content = this.nextElementSibling;
+                    if (content.style.maxHeight && content.style.maxHeight !== "0px") {
+                        content.style.maxHeight = null;
+                        content.style.padding = "0 15px"; // Ensure padding is reset
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        content.style.padding = "10px 15px";
+                    }
+                });
+            });
+        }
+        
+        resetFiltersButton.addEventListener('click', () => {
+            searchInput.value = '';
+            areaFilter.value = 'todos';
+            licenciaFilter.value = 'todos';
+            filterTools();
+        });
+
+        searchInput.addEventListener('keyup', filterTools);
+        areaFilter.addEventListener('change', filterTools);
+        licenciaFilter.addEventListener('change', filterTools);
+
+        // Render inicial
+        renderTools(toolsData);
+    </script>
+
+</body>
+</html>

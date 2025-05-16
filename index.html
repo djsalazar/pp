@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción | Transformación Digital en la Educación y Justicia</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend+Deca:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.10/dist/cdn.min.js"></script>
+</head>
+<body x-data="{ darkMode: localStorage.getItem('darkMode') === 'true', sidebarOpen: window.innerWidth > 1024, searchOpen: false }"
+      @keydown.escape="searchOpen = false"
+      @keydown.window="if($event.key === 'k' && ($event.ctrlKey || $event.metaKey)) { $event.preventDefault(); searchOpen = true; $nextTick(() => { document.getElementById('search-input').focus(); })}"
+      :class="{ 'dark': darkMode }"
+      x-init="$watch('darkMode', value => localStorage.setItem('darkMode', value))">
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="header-left">
+                    <a href="index.html" class="site-logo">
+                        <i class="fas fa-home"></i>
+                        <span>Inicio Principal</span>
+                    </a>
+                </div>
+                <div class="header-right">
+                    <button @click="searchOpen = true" class="header-btn search-btn">
+                        <i class="fas fa-search"></i>
+                        <span class="hidden md:inline-block">Buscar</span>
+                        <span class="kbd hidden md:inline-flex">Ctrl+K</span>
+                    </button>
+                    <button @click="darkMode = !darkMode" class="header-btn theme-toggle-btn">
+                        <i :class="darkMode ? 'fas fa-sun' : 'fas fa-moon'"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="site-wrapper">
+        <main class="main-content" style="margin-left: 0; padding-top: var(--header-height);">
+            <div class="container">
+                <section class="hero-banner" style="margin-bottom: var(--space-xxl); margin-top: var(--space-xl);">
+                    <div class="hero-content" style="flex: 2;">
+                        <span class="hero-pre-title">Plataforma de Aprendizaje</span>
+                        <h1 class="hero-title">Explorando la Transformación Digital</h1>
+                        <p class="hero-subtitle">Navegue por nuestros módulos interactivos para descubrir las últimas tendencias y herramientas en la educación y la gestión judicial en la era digital.</p>
+                        <p class="hero-text">Seleccione una de las siguientes secciones para comenzar su viaje de aprendizaje.</p>
+                    </div>
+                    <div class="hero-image" style="flex: 1;">
+                        <img src="https://source.unsplash.com/random/600x400/?digital,innovation,learning,guatemala" alt="Innovación Digital">
+                    </div>
+                </section>
+
+                <section id="introduction-cards" class="module-section">
+                    <div class="module-header" style="text-align: center;">
+                        <h2>Módulos Disponibles</h2>
+                        <p class="module-description">Acceda a nuestros recursos educativos especializados.</p>
+                    </div>
+
+                    <div class="content-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-xl);">
+                        
+                        <a href="intro.html" class="content-card interactive-card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon-container" style="text-align: center; margin-bottom: var(--space-md);">
+                                <i class="fas fa-chalkboard-teacher fa-3x" style="color: var(--color-primary);"></i>
+                            </div>
+                            <h4 style="text-align: center;">Tendencias Educativas en la Era Digital</h4>
+                            <p style="text-align: center; color: var(--color-text-secondary);">Descubra los fundamentos de la IA, la Cuarta Revolución Industrial y la Sociedad 5.0, y cómo están moldeando el futuro de la educación.</p>
+                            <div style="text-align: center; margin-top: var(--space-md);">
+                                <span class="btn btn-primary">Acceder al Módulo 1</span>
+                            </div>
+                        </a>
+
+                        <a href="geminiai.html" class="content-card interactive-card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon-container" style="text-align: center; margin-bottom: var(--space-md);">
+                                <i class="fas fa-cogs fa-3x" style="color: var(--color-accent);"></i>
+                            </div>
+                            <h4 style="text-align: center;">Taller de Tendencias y Herramientas Educativas</h4>
+                            <p style="text-align: center; color: var(--color-text-secondary);">Participe en un taller práctico enfocado en las herramientas emergentes y las tendencias que están revolucionando la enseñanza y el aprendizaje.</p>
+                             <div style="text-align: center; margin-top: var(--space-md);">
+                                <span class="btn btn-primary" style="background-color: var(--color-accent); border-color: var(--color-accent);">Acceder al Módulo 2</span>
+                            </div>
+                        </a>
+
+                        <a href="tools.html" class="content-card interactive-card" style="text-decoration: none; color: inherit;">
+                            <div class="card-icon-container" style="text-align: center; margin-bottom: var(--space-md);">
+                                <i class="fas fa-gavel fa-3x" style="color: var(--color-success);"></i>
+                            </div>
+                            <h4 style="text-align: center;">Herramientas para la Innovación en Educación y Gestión Judicial</h4>
+                            <p style="text-align: center; color: var(--color-text-secondary);">Explore una selección de herramientas y tecnologías diseñadas para fomentar la innovación tanto en el ámbito educativo como en la gestión judicial.</p>
+                             <div style="text-align: center; margin-top: var(--space-md);">
+                                <span class="btn btn-primary" style="background-color: var(--color-success); border-color: var(--color-success);">Acceder al Módulo 3</span>
+                            </div>
+                        </a>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <div x-show="searchOpen" class="search-modal" @click.away="searchOpen = false" x-transition style="display: none;">
+        <div class="search-container" @click.stop>
+            <div class="search-header">
+                <h3>Buscar en el recurso</h3>
+                <button @click="searchOpen = false" class="close-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="search-input-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="search-input" placeholder="Escribe para buscar..." @keydown.escape.stop="searchOpen = false">
+            </div>
+            <div class="search-results">
+                <p class="search-prompt">Ingresa al menos 2 caracteres para buscar</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logos">
+                    <img src="./logo1.png" alt="Logo Organismo Judicial" class="footer-logo">
+                    <img src="https://www.gt.undp.org/etc.clientlibs/undp/clientlibs/clientlib-site/resources/assets/undp-logo-white.svg" alt="PNUD Logo" class="footer-logo">
+                </div>
+                <div class="footer-credits">
+                    <p>Plataforma Interactiva de Aprendizaje | Mayo 2025</p>
+                    <p>Escuela de Estudios Judiciales - OJ Guatemala & PNUD</p>
+                </div>
+                <div class="footer-links">
+                     <p><i class="fas fa-envelope"></i> djsalazarg@oj.gob.gt</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scroll-top" class="scroll-top-btn" style="display: none;">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="script.js"></script>
+    <style>
+        .interactive-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        .md\:inline-block {
+            display: inline-block;
+        }
+        @media (max-width: 768px) {
+            .md\:inline-block {
+                display: none;
+            }
+            .hero-banner {
+                padding: var(--space-lg);
+            }
+            .hero-title {
+                font-size: 2rem; /* Ajustado para móviles */
+            }
+            .hero-subtitle {
+                font-size: 1.1rem; /* Ajustado para móviles */
+            }
+        }
+    </style>
+</body>
+</html>

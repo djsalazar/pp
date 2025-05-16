@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Section Title Styling */
+.section-subtitle {
+    @apply text-2xl sm:text-3xl font-bold text-center mb-8 text-accent-orange flex items-center justify-center;
+    /* text-shadow: 1px 1px 2px rgba(0,0,0,0.2); */
+}
+.section-subtitle i {
+    @apply mr-3 text-2xl;
+}
+
+/* Accordion Styling (Module 1) */
+.accordion-item {
+    @apply bg-slate-700 rounded-lg shadow-md overflow-hidden transition-all duration-300;
+}
+.accordion-trigger {
+    @apply w-full text-left p-4 sm:p-5 font-semibold text-slate-100 hover:bg-slate-600/50 flex justify-between items-center transition-colors;
+}
+.accordion-content {
+    @apply p-4 sm:p-5 border-t border-slate-600 text-slate-300 text-sm sm:text-base;
+}
+.accordion-content p + p {
+    @apply mt-3;
+}
+
+/* Accordion Styling Alt (Module 2 - Trends) */
+.accordion-item-alt {
+    @apply bg-slate-700/60 rounded-lg shadow-md overflow-hidden transition-all duration-300;
+}
+.accordion-trigger-alt {
+    @apply w-full text-left p-4 font-semibold text-accent-teal hover:bg-slate-600/50 flex justify-between items-center transition-colors;
+}
+.accordion-trigger-alt span {
+    @apply flex items-center;
+}
+.accordion-content-alt {
+    @apply p-4 border-t border-slate-600 text-slate-300 text-sm bg-slate-700/30;
+}
+
+/* Accordion Styling Dark (Module 3 - Ethics) */
+.accordion-item-dark {
+    @apply bg-slate-700 rounded-lg shadow-lg overflow-hidden transition-all duration-300 border border-slate-600;
+}
+.accordion-trigger-dark {
+    @apply w-full text-left p-4 sm:p-5 font-semibold text-accent-orange hover:bg-slate-600/70 flex justify-between items-center transition-colors;
+}
+.accordion-trigger-dark span {
+    @apply flex items-center;
+}
+.accordion-content-dark {
+    @apply p-4 sm:p-5 border-t border-slate-600 text-slate-300 text-sm sm:text-base bg-slate-700/50;
+}
+
+
+/* Vertical Timeline Styling (Module 1) */
+.vertical-timeline {
+    position: relative;
+    padding: 20px 0;
+}
+.vertical-timeline::before {
+    content: '';
+    position: absolute;
+    left: 19px; /* Adjust to center with the dot */
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: #334155; /* slate-700 */
+    border-radius: 2px;
+}
+.timeline-entry {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 50px; /* Space for dot and some margin */
+    cursor: pointer;
+}
+.timeline-entry-dot {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px; /* Align with text */
+    height: 24px;
+    width: 24px;
+    background-color: #475569; /* slate-600 */
+    border: 4px solid #1e293b; /* slate-800 or current section bg */
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+.timeline-entry.active .timeline-entry-dot {
+    background-color: #14b8a6; /* accent-teal */
+    transform: scale(1.1);
+    border-color: #0f172a; /* brand-dark */
+}
+.timeline-entry-content {
+    background-color: #1e293b; /* slate-800 (slightly lighter than main bg for contrast) */
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.timeline-entry:hover .timeline-entry-content {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+.timeline-entry.active .timeline-entry-content {
+    border-left: 4px solid #14b8a6; /* accent-teal */
+}
+.timeline-entry-title {
+    @apply font-bold text-lg mb-1 text-accent-teal;
+}
+.timeline-entry-details {
+    @apply text-sm text-slate-300;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, margin-top 0.5s ease-in-out;
+}
+.timeline-entry.active .timeline-entry-details {
+    max-height: 200px; /* Adjust as needed */
+    opacity: 1;
+    margin-top: 8px;
+}
+
+/* Dynamic Card Styling (Module 1 - Tecnologías) */
+.dynamic-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.dynamic-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.25), 0 0 15px rgba(20, 184, 166, 0.3); /* accent-teal glow */
+}
+
+/* Case Card Styling (Module 3 - Casos de Éxito) */
+.case-card {
+    @apply bg-slate-700 rounded-lg shadow-xl overflow-hidden cursor-pointer transition-all duration-300 ease-in-out;
+}
+.case-card:hover {
+    @apply shadow-2xl shadow-accent-teal/20 transform -translate-y-1;
+}
+.case-card-img {
+    @apply w-full h-48 object-cover transition-transform duration-300 ease-in-out;
+}
+.case-card:hover .case-card-img {
+    transform: scale(1.05);
+}
+.case-card-content {
+    @apply p-5 sm:p-6;
+}
+.case-card-title {
+    @apply text-xl font-semibold text-accent-teal mb-2;
+}
+
+/* General Content Section Styling */
+.content-section {
+    @apply mb-12 md:mb-20;
+}
+
+/* Animation on Scroll */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Prose Customizations for Duolingo section */
+.prose-invert blockquote {
+    @apply border-l-4 border-accent-teal bg-slate-700/30 p-4 rounded-r-lg;
+}
+.prose-invert blockquote p {
+    @apply text-slate-300;
+}
+.prose-invert cite {
+    @apply text-slate-400 text-sm block text-right mt-2;
+}
+.prose-invert ul > li::before {
+    @apply bg-accent-teal; /* Color of bullet points */
+}
+
+/* Navbar shrink effect is handled by Alpine :class binding in HTML now */
+
+/* Font Awesome Icons - ensure you have it linked or installed */
+/* Example of icon usage: <i class="fas fa-home"></i> */

@@ -1,0 +1,890 @@
+<!-- Módulo 4: Preparándonos para el Futuro -->
+<section id="module4" class="module-section" x-show="activeModule === 'module4'">
+    <div class="module-header">
+        <h2>
+            <span class="module-number">04</span>
+            Preparándonos para el Futuro: Acción y Discusión
+        </h2>
+        <p class="module-description">Reflexionando sobre la urgencia de actuar, identificando oportunidades para Guatemala y el OJ, y abriendo un espacio para el diálogo.</p>
+    </div>
+    
+    <!-- Pestañas internas del módulo 4 -->
+    <div class="module-tabs">
+        <nav class="tab-navigation">
+            <a href="#m4tab1" @click.prevent="activeTab = 'm4tab1'" :class="{'active': activeTab === 'm4tab1'}">Llamado a la Acción</a>
+            <a href="#m4tab2" @click.prevent="activeTab = 'm4tab2'" :class="{'active': activeTab === 'm4tab2'}">Oportunidades Locales</a>
+            <a href="#m4tab3" @click.prevent="activeTab = 'm4tab3'" :class="{'active': activeTab === 'm4tab3'}">Taller Práctico</a>
+        </nav>
+        
+        <!-- Contenido de pestañas del módulo 4 -->
+        <div class="tab-content">
+            <!-- Tab 1: Llamado a la Acción -->
+            <div id="m4tab1" class="tab-pane" x-show="activeTab === 'm4tab1'">
+                <div class="tab-header">
+                    <h3>El Momento de Actuar es AHORA</h3>
+                    <p>El "rezago" no es barrera, sino un llamado a la acción estratégica y decidida.</p>
+                </div>
+
+                <div class="action-banner">
+                    <div class="action-content">
+                        <p class="action-tagline">El futuro no espera. La transformación digital es inevitable, pero su dirección y beneficios están en nuestras manos.</p>
+                        <div class="action-points">
+                            <div class="action-point">
+                                <div class="action-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div>
+                                    <h4>Urgencia</h4>
+                                    <p>La velocidad del cambio tecnológico no se detiene y la brecha entre adaptadores tempranos y tardíos crece exponencialmente.</p>
+                                </div>
+                            </div>
+                            <div class="action-point">
+                                <div class="action-icon"><i class="fas fa-seedling"></i></div>
+                                <div>
+                                    <h4>Comienzo Incremental</h4>
+                                    <p>No es necesario transformarlo todo de una vez; proyectos piloto bien seleccionados generan aprendizajes y tracción organizacional.</p>
+                                </div>
+                            </div>
+                            <div class="action-point">
+                                <div class="action-icon"><i class="fas fa-hands-helping"></i></div>
+                                <div>
+                                    <h4>Colaboración</h4>
+                                    <p>Las alianzas estratégicas con academia, sector privado y organizaciones internacionales multiplican capacidades e impacto.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="action-image">
+                        <img src="https://source.unsplash.com/random/600x400/?future,technology,action" alt="Tecnología en acción">
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h4 class="text-center">Barreras y Estrategias de Superación</h4>
+                    <div class="barriers-container">
+                        <div x-data="{ expanded: null }" class="barriers-list">
+                            <div class="barrier-item" :class="{'expanded': expanded === 'presupuesto'}">
+                                <div class="barrier-header" @click="expanded = expanded === 'presupuesto' ? null : 'presupuesto'">
+                                    <div class="barrier-icon"><i class="fas fa-money-bill-wave"></i></div>
+                                    <h5>Limitaciones Presupuestarias</h5>
+                                    <i class="fas" :class="expanded === 'presupuesto' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                </div>
+                                <div x-show="expanded === 'presupuesto'" x-collapse class="barrier-solutions">
+                                    <p>Las restricciones financieras son reales, especialmente en el sector público, pero existen múltiples aproximaciones para superarlas:</p>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Modelos Graduales</h6>
+                                            <p>Implementación por fases con inversión escalonada y validación de ROI en cada etapa.</p>
+                                        </div>
+                                    </div>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Cooperación Internacional</h6>
+                                            <p>Programas de asistencia técnica y financiera específicos para modernización judicial y educativa.</p>
+                                        </div>
+                                    </div>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Herramientas Open Source</h6>
+                                            <p>Aprovechamiento de ecosistemas de código abierto con comunidades activas de desarrollo.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="barrier-item" :class="{'expanded': expanded === 'resistencia'}">
+                                <div class="barrier-header" @click="expanded = expanded === 'resistencia' ? null : 'resistencia'">
+                                    <div class="barrier-icon"><i class="fas fa-ban"></i></div>
+                                    <h5>Resistencia al Cambio</h5>
+                                    <i class="fas" :class="expanded === 'resistencia' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                </div>
+                                <div x-show="expanded === 'resistencia'" x-collapse class="barrier-solutions">
+                                    <p>La resistencia organizacional es uno de los obstáculos más significativos pero manejables con el enfoque adecuado:</p>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Liderazgo Visible</h6>
+                                            <p>Compromiso explícito de líderes institucionales con la transformación digital.</p>
+                                        </div>
+                                    </div>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Participación Temprana</h6>
+                                            <p>Involucramiento de usuarios finales desde las etapas iniciales de diseño de soluciones.</p>
+                                        </div>
+                                    </div>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Victorias Rápidas</h6>
+                                            <p>Demostración temprana de beneficios tangibles con casos de uso de alto impacto y baja complejidad.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="barrier-item" :class="{'expanded': expanded === 'capacidades'}">
+                                <div class="barrier-header" @click="expanded = expanded === 'capacidades' ? null : 'capacidades'">
+                                    <div class="barrier-icon"><i class="fas fa-graduation-cap"></i></div>
+                                    <h5>Brecha de Capacidades</h5>
+                                    <i class="fas" :class="expanded === 'capacidades' ? 'fa-chevron-up' : 'fa-chevron-down'"></i>
+                                </div>
+                                <div x-show="expanded === 'capacidades'" x-collapse class="barrier-solutions">
+                                    <p>La falta de habilidades técnicas específicas puede ralentizar la adopción, pero existen estrategias efectivas:</p>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Formación Escalonada</h6>
+                                            <p>Programas de capacitación por niveles, desde alfabetización digital básica hasta especialización avanzada.</p>
+                                        </div>
+                                    </div>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Alianzas Académicas</h6>
+                                            <p>Colaboración con universidades para programas específicos de formación y certificación.</p>
+                                        </div>
+                                    </div>
+                                    <div class="solution">
+                                        <div class="solution-icon"><i class="fas fa-check-circle"></i></div>
+                                        <div>
+                                            <h6>Equipos Híbridos</h6>
+                                            <p>Combinación de personal interno con consultores especializados para transferencia de conocimiento.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h4 class="text-center">Organización para la Transformación Digital</h4>
+                    <div class="organization-diagram">
+                        <div class="org-level leadership">
+                            <div class="org-header">Liderazgo Estratégico</div>
+                            <div class="org-items">
+                                <div class="org-item">
+                                    <div class="org-icon"><i class="fas fa-compass"></i></div>
+                                    <div>
+                                        <h5>Visión y Dirección</h5>
+                                        <p>Definición de objetivos estratégicos y hoja de ruta clara.</p>
+                                    </div>
+                                </div>
+                                <div class="org-item">
+                                    <div class="org-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                                    <div>
+                                        <h5>Asignación de Recursos</h5>
+                                        <p>Priorización y distribución de presupuesto e inversiones.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="org-arrow"><i class="fas fa-arrow-down"></i></div>
+                        
+                        <div class="org-level management">
+                            <div class="org-header">Gestión del Cambio</div>
+                            <div class="org-items">
+                                <div class="org-item">
+                                    <div class="org-icon"><i class="fas fa-tasks"></i></div>
+                                    <div>
+                                        <h5>Planificación Táctica</h5>
+                                        <p>Diseño de proyectos, KPIs y sistemas de evaluación.</p>
+                                    </div>
+                                </div>
+                                <div class="org-item">
+                                    <div class="org-icon"><i class="fas fa-users"></i></div>
+                                    <div>
+                                        <h5>Desarrollo de Equipos</h5>
+                                        <p>Formación de capacidades y gestión del conocimiento.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="org-arrow"><i class="fas fa-arrow-down"></i></div>
+                        
+                        <div class="org-level execution">
+                            <div class="org-header">Ejecución e Implementación</div>
+                            <div class="org-items">
+                                <div class="org-item">
+                                    <div class="org-icon"><i class="fas fa-rocket"></i></div>
+                                    <div>
+                                        <h5>Proyectos Piloto</h5>
+                                        <p>Implementaciones ágiles con evaluación iterativa.</p>
+                                    </div>
+                                </div>
+                                <div class="org-item">
+                                    <div class="org-icon"><i class="fas fa-sync-alt"></i></div>
+                                    <div>
+                                        <h5>Mejora Continua</h5>
+                                        <p>Ciclos de retroalimentación y optimización constante.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quote-banner">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <blockquote>La mejor manera de predecir el futuro es creándolo.</blockquote>
+                    <p class="quote-author">— Peter Drucker</p>
+                </div>
+
+                <div class="content-card resource-links">
+                    <h4><i class="fas fa-external-link-alt"></i> Recursos de implementación</h4>
+                    <div class="resources-grid">
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-clipboard-list"></i>
+                            <div>
+                                <h5>Plantilla: Plan de Transformación</h5>
+                                <span>Documento editable</span>
+                            </div>
+                        </a>
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-presentation"></i>
+                            <div>
+                                <h5>Presentación: Caso de Negocio</h5>
+                                <span>Slides para decisores</span>
+                            </div>
+                        </a>
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h5>Kit: Gestión del Cambio</h5>
+                                <span>Materiales y guía práctica</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab 2: Oportunidades Locales -->
+            <div id="m4tab2" class="tab-pane" x-show="activeTab === 'm4tab2'">
+                <div class="tab-header">
+                    <h3>Oportunidades para Guatemala y el Organismo Judicial</h3>
+                    <p>Análisis de oportunidades específicas en el contexto local y sectorial.</p>
+                </div>
+
+                <div class="content-card local-context">
+                    <h4>Contexto Específico de Guatemala</h4>
+                    <div class="context-container">
+                        <div class="context-map">
+                            <img src="https://geologicalsociety.org.gt/wp-content/uploads/2023/01/guatemala-map.jpg" alt="Mapa de Guatemala" class="responsive-image">
+                        </div>
+                        <div class="context-data">
+                            <div class="data-item">
+                                <div class="data-label">Penetración de Internet</div>
+                                <div class="data-value">65%</div>
+                                <div class="data-note">Con fuerte concentración urbana</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">Diversidad Lingüística</div>
+                                <div class="data-value">25</div>
+                                <div class="data-note">Idiomas oficialmente reconocidos</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">Población Rural</div>
+                                <div class="data-value">49%</div>
+                                <div class="data-note">Con acceso limitado a servicios</div>
+                            </div>
+                            <div class="data-item">
+                                <div class="data-label">Inversión TIC</div>
+                                <div class="data-value">1.2%</div>
+                                <div class="data-note">Del PIB (por debajo del promedio regional)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="context-analysis">
+                        <p>El contexto guatemalteco presenta desafíos únicos pero también oportunidades de "salto tecnológico" (leapfrogging) que permiten adoptar soluciones avanzadas sin pasar por etapas intermedias, similar a cómo la región adoptó telefonía móvil sin completar la infraestructura de línea fija.</p>
+                        <div class="swot-grid">
+                            <div class="swot-item strengths">
+                                <h5>Fortalezas</h5>
+                                <ul>
+                                    <li>Alta penetración móvil (>120%)</li>
+                                    <li>Población joven y adaptable</li>
+                                    <li>Ecosistema tecnológico emergente</li>
+                                </ul>
+                            </div>
+                            <div class="swot-item weaknesses">
+                                <h5>Debilidades</h5>
+                                <ul>
+                                    <li>Brecha digital rural-urbana</li>
+                                    <li>Limitaciones presupuestarias</li>
+                                    <li>Baja alfabetización digital en ciertos sectores</li>
+                                </ul>
+                            </div>
+                            <div class="swot-item opportunities">
+                                <h5>Oportunidades</h5>
+                                <ul>
+                                    <li>Cooperación internacional tecnológica</li>
+                                    <li>Modelos cloud sin necesidad de infraestructura física</li>
+                                    <li>Soluciones multilingües avanzadas con IA</li>
+                                </ul>
+                            </div>
+                            <div class="swot-item threats">
+                                <h5>Amenazas</h5>
+                                <ul>
+                                    <li>Ampliación de brechas existentes</li>
+                                    <li>Dependencia tecnológica externa</li>
+                                    <li>Privacidad y seguridad de datos</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h4 class="text-center">Caso Práctico: Digitalización IA del Archivo Judicial</h4>
+                    <div class="case-study-oj">
+                        <div class="case-study-description">
+                            <p>El Organismo Judicial de Guatemala gestiona un extenso archivo físico de documentos, resoluciones y expedientes que se remonta a décadas atrás, con procesos de consulta laboriosos y limitaciones de acceso geográfico. Una transformación digital impulsada por IA podría revolucionar este sistema.</p>
+                            <div class="case-illustration">
+                                <img src="https://i.imgur.com/L2AHb5e.jpg" alt="Archivo judicial" class="responsive-image">
+                            </div>
+                        </div>
+                        <div x-data="{ activeTab: 'beneficios' }" class="case-tabs">
+                            <div class="case-tab-nav">
+                                <button @click="activeTab='beneficios'" :class="{'active': activeTab==='beneficios'}">Beneficios</button>
+                                <button @click="activeTab='desafios'" :class="{'active': activeTab==='desafios'}">Desafíos</button>
+                                <button @click="activeTab='tecnologias'" :class="{'active': activeTab==='tecnologias'}">Tecnologías</button>
+                                <button @click="activeTab='implementacion'" :class="{'active': activeTab==='implementacion'}">Implementación</button>
+                            </div>
+                            <div class="case-tab-content">
+                                <div x-show="activeTab==='beneficios'" class="tab-panel animate-fade-in">
+                                    <ul class="benefit-list">
+                                        <li><i class="fas fa-check-circle"></i> Acceso instantáneo a precedentes legales históricos</li>
+                                        <li><i class="fas fa-check-circle"></i> Reducción drástica en tiempos de investigación judicial</li>
+                                        <li><i class="fas fa-check-circle"></i> Análisis de patrones en jurisprudencia para consistencia</li>
+                                        <li><i class="fas fa-check-circle"></i> Preservación digital de documentos históricos</li>
+                                        <li><i class="fas fa-check-circle"></i> Acceso descentralizado para juzgados en todo el país</li>
+                                        <li><i class="fas fa-check-circle"></i> Búsqueda semántica avanzada más allá de palabras clave</li>
+                                    </ul>
+                                </div>
+                                <div x-show="activeTab==='desafios'" class="tab-panel animate-fade-in">
+                                    <ul class="challenge-list">
+                                        <li><i class="fas fa-exclamation-triangle"></i> <strong>Digitalización de formatos diversos:</strong> Documentos históricos con caligrafía, sellos, daños y formatos heterogéneos.</li>
+                                        <li><i class="fas fa-exclamation-triangle"></i> <strong>Protección de datos sensibles:</strong> Anonimización y clasificación automática de información confidencial.</li>
+                                        <li><i class="fas fa-exclamation-triangle"></i> <strong>Manejo de vocabulario jurídico:</strong> Adaptación de modelos lingüísticos al lenguaje técnico legal guatemalteco.</li>
+                                        <li><i class="fas fa-exclamation-triangle"></i> <strong>Integración con sistemas existentes:</strong> Interoperabilidad con SGT y otros sistemas del OJ.</li>
+                                    </ul>
+                                </div>
+                                <div x-show="activeTab==='tecnologias'" class="tab-panel animate-fade-in">
+                                    <div class="tech-solution-grid">
+                                        <div class="tech-solution">
+                                            <div class="tech-solution-icon"><i class="fas fa-file-alt"></i></div>
+                                            <div>
+                                                <h5>OCR Avanzado con IA</h5>
+                                                <p>Reconocimiento óptico de caracteres potenciado con aprendizaje profundo para documentos deteriorados y escritura manual.</p>
+                                            </div>
+                                        </div>
+                                        <div class="tech-solution">
+                                            <div class="tech-solution-icon"><i class="fas fa-brain"></i></div>
+                                            <div>
+                                                <h5>NLP Especializado</h5>
+                                                <p>Procesamiento de lenguaje natural con fine-tuning específico para terminología jurídica guatemalteca e idiomas locales.</p>
+                                            </div>
+                                        </div>
+                                        <div class="tech-solution">
+                                            <div class="tech-solution-icon"><i class="fas fa-database"></i></div>
+                                            <div>
+                                                <h5>Base de Datos Vectorial</h5>
+                                                <p>Almacenamiento optimizado para búsquedas semánticas que capturan significado conceptual más allá de palabras exactas.</p>
+                                            </div>
+                                        </div>
+                                        <div class="tech-solution">
+                                            <div class="tech-solution-icon"><i class="fas fa-eye-slash"></i></div>
+                                            <div>
+                                                <h5>Redacción Automatizada</h5>
+                                                <p>Sistemas de detección y anonimización automática de información sensible con supervisión humana.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div x-show="activeTab==='implementacion'" class="tab-panel animate-fade-in">
+                                    <div class="implementation-phases">
+                                        <div class="phase">
+                                            <div class="phase-number">1</div>
+                                            <div class="phase-content">
+                                                <h5>Piloto Focalizado</h5>
+                                                <p>Selección de un juzgado y tipo documental específico para validación de concepto y aprendizaje.</p>
+                                                <div class="phase-duration">3-4 meses</div>
+                                            </div>
+                                        </div>
+                                        <div class="phase-arrow"><i class="fas fa-arrow-right"></i></div>
+                                        <div class="phase">
+                                            <div class="phase-number">2</div>
+                                            <div class="phase-content">
+                                                <h5>Expansión Controlada</h5>
+                                                <p>Escalamiento a múltiples juzgados y tipos documentales con mejoras iterativas.</p>
+                                                <div class="phase-duration">6-8 meses</div>
+                                            </div>
+                                        </div>
+                                        <div class="phase-arrow"><i class="fas fa-arrow-right"></i></div>
+                                        <div class="phase">
+                                            <div class="phase-number">3</div>
+                                            <div class="phase-content">
+                                                <h5>Despliegue Nacional</h5>
+                                                <p>Implementación a escala con capacitación masiva y soporte regionalizado.</p>
+                                                <div class="phase-duration">12-18 meses</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="implementation-costs">
+                                        <div class="cost-estimate">
+                                            <div class="cost-label">Inversión estimada:</div>
+                                            <div class="cost-range">$1.2M - $1.8M</div>
+                                        </div>
+                                        <div class="roi-estimate">
+                                            <div class="roi-label">ROI proyectado:</div>
+                                            <div class="roi-value">380%</div>
+                                            <div class="roi-period">en 5 años</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div x-data="{ pollClosed: false }" class="opinion-poll">
+                    <h4 class="text-center">Encuesta de Opinión</h4>
+                    <div class="poll-question">
+                        <p>¿Qué tan viable considera este proyecto de digitalización para el OJ de Guatemala?</p>
+                    </div>
+                    <template x-if="!pollClosed">
+                        <div class="poll-options">
+                            <button @click="pollClosed=true" class="poll-option">Muy viable</button>
+                            <button @click="pollClosed=true" class="poll-option">Viable con ajustes</button>
+                            <button @click="pollClosed=true" class="poll-option">Poco viable</button>
+                            <button @click="pollClosed=true" class="poll-option">Inviable actualmente</button>
+                        </div>
+                    </template>
+                    <template x-if="pollClosed">
+                        <div class="poll-results animate-fade-in">
+                            <p>Resultados (simulados para demostración):</p>
+                            <div class="poll-result-item">
+                                <div class="result-label">Muy viable</div>
+                                <div class="result-bar">
+                                    <div class="result-fill" style="width:42%"></div>
+                                    <div class="result-percentage">42%</div>
+                                </div>
+                            </div>
+                            <div class="poll-result-item">
+                                <div class="result-label">Viable con ajustes</div>
+                                <div class="result-bar">
+                                    <div class="result-fill" style="width:35%"></div>
+                                    <div class="result-percentage">35%</div>
+                                </div>
+                            </div>
+                            <div class="poll-result-item">
+                                <div class="result-label">Poco viable</div>
+                                <div class="result-bar">
+                                    <div class="result-fill" style="width:18%"></div>
+                                    <div class="result-percentage">18%</div>
+                                </div>
+                            </div>
+                            <div class="poll-result-item">
+                                <div class="result-label">Inviable actualmente</div>
+                                <div class="result-bar">
+                                    <div class="result-fill" style="width:5%"></div>
+                                    <div class="result-percentage">5%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+
+                <div class="content-card resource-links">
+                    <h4><i class="fas fa-external-link-alt"></i> Recursos complementarios</h4>
+                    <div class="resources-grid">
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-flag"></i>
+                            <div>
+                                <h5>Estudio: IA en Latinoamérica</h5>
+                                <span>BID - Análisis Regional</span>
+                            </div>
+                        </a>
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-gavel"></i>
+                            <div>
+                                <h5>Informe: Transformación Digital Judicial</h5>
+                                <span>Casos de éxito regionales</span>
+                            </div>
+                        </a>
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-hand-holding-usd"></i>
+                            <div>
+                                <h5>Guía: Financiamiento de Innovación</h5>
+                                <span>Opciones para sector público</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tab 3: Taller Práctico -->
+            <div id="m4tab3" class="tab-pane" x-show="activeTab === 'm4tab3'">
+                <div class="tab-header">
+                    <h3>Taller Práctico: Diseñando el Futuro</h3>
+                    <p>Ejercicios interactivos para aplicar lo aprendido y desarrollar planes concretos.</p>
+                </div>
+
+                <div class="workshop-intro">
+                    <div class="workshop-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div>
+                        <h4>Objetivos del Taller</h4>
+                        <p>Traducir conocimientos teóricos en planes de acción concretos y realizables, adaptados al contexto específico de participantes.</p>
+                        <div class="workshop-goals">
+                            <div class="goal"><i class="fas fa-check"></i> Identificar oportunidades de alto impacto</div>
+                            <div class="goal"><i class="fas fa-check"></i> Desarrollar conceptos iniciales de proyectos</div>
+                            <div class="goal"><i class="fas fa-check"></i> Bosquejar planes de implementación escalonada</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workshop-container">
+                    <div x-data="{ activeStep: 1 }" class="workshop-content">
+                        <div class="workshop-progress">
+                            <div class="progress-item" :class="{'active': activeStep >= 1, 'completed': activeStep > 1}" @click="activeStep = 1">
+                                <div class="progress-number">1</div>
+                                <div class="progress-label">Ideación</div>
+                            </div>
+                            <div class="progress-line" :class="{'active': activeStep > 1}"></div>
+                            <div class="progress-item" :class="{'active': activeStep >= 2, 'completed': activeStep > 2}" @click="activeStep = 2">
+                                <div class="progress-number">2</div>
+                                <div class="progress-label">Evaluación</div>
+                            </div>
+                            <div class="progress-line" :class="{'active': activeStep > 2}"></div>
+                            <div class="progress-item" :class="{'active': activeStep >= 3, 'completed': activeStep > 3}" @click="activeStep = 3">
+                                <div class="progress-number">3</div>
+                                <div class="progress-label">Prototipado</div>
+                            </div>
+                            <div class="progress-line" :class="{'active': activeStep > 3}"></div>
+                            <div class="progress-item" :class="{'active': activeStep >= 4}" @click="activeStep = 4">
+                                <div class="progress-number">4</div>
+                                <div class="progress-label">Planificación</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Paso 1: Ideación -->
+                        <div x-show="activeStep === 1" class="workshop-step animate-fade-in">
+                            <h4>Paso 1: Lluvia de Ideas</h4>
+                            <p class="step-description">Identifique áreas de oportunidad donde la IA podría transformar procesos específicos en su contexto.</p>
+                            
+                            <div class="ideation-prompts">
+                                <div class="prompt-category">
+                                    <h5><i class="fas fa-exclamation-triangle"></i> Puntos de Dolor</h5>
+                                    <p>¿Qué procesos actuales son especialmente lentos, costosos o frustrantes?</p>
+                                    <textarea class="workshop-textarea" placeholder="Enumere 3-5 procesos con desafíos significativos..."></textarea>
+                                </div>
+                                <div class="prompt-category">
+                                    <h5><i class="fas fa-rocket"></i> Oportunidades</h5>
+                                    <p>¿Qué servicios o experiencias podrían mejorar radicalmente con IA?</p>
+                                    <textarea class="workshop-textarea" placeholder="Describa 3-5 áreas con alto potencial de transformación..."></textarea>
+                                </div>
+                            </div>
+                            
+                            <div class="ideation-grid">
+                                <div class="ideation-item">
+                                    <div class="idea-header">
+                                        <div class="idea-icon"><i class="fas fa-lightbulb"></i></div>
+                                        <h5>Idea Inspiradora #1</h5>
+                                    </div>
+                                    <p>Sistema de transcripción automática inteligente para audiencias judiciales con reconocimiento de hablantes y resumen en tiempo real.</p>
+                                </div>
+                                <div class="ideation-item">
+                                    <div class="idea-header">
+                                        <div class="idea-icon"><i class="fas fa-lightbulb"></i></div>
+                                        <h5>Idea Inspiradora #2</h5>
+                                    </div>
+                                    <p>Asistente virtual multilingüe (español-maya) para orientación a ciudadanos sobre procesos judiciales con explicaciones adaptadas culturalmente.</p>
+                                </div>
+                                <div class="ideation-item">
+                                    <div class="idea-header">
+                                        <div class="idea-icon"><i class="fas fa-lightbulb"></i></div>
+                                        <h5>Idea Inspiradora #3</h5>
+                                    </div>
+                                    <p>Plataforma de microlearning adaptativo para capacitación continua de personal judicial basada en casos reales anonimizados.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="workshop-navigation">
+                                <button @click="activeStep = 2" class="btn btn-primary">Continuar al Paso 2</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Paso 2: Evaluación -->
+                        <div x-show="activeStep === 2" class="workshop-step animate-fade-in">
+                            <h4>Paso 2: Matriz de Evaluación</h4>
+                            <p class="step-description">Evalúe y priorice ideas según su impacto potencial y viabilidad de implementación.</p>
+                            
+                            <div class="evaluation-matrix">
+                                <div class="matrix-quadrants">
+                                    <div class="matrix-quadrant high-impact-high-feasibility">
+                                        <h5>Alto Impacto / Alta Viabilidad</h5>
+                                        <p class="quadrant-description">Proyectos "Quick Win" - Prioridad máxima</p>
+                                        <div class="idea-cards-container">
+                                            <div class="draggable-idea">Arrastre ideas aquí...</div>
+                                        </div>
+                                    </div>
+                                    <div class="matrix-quadrant high-impact-low-feasibility">
+                                        <h5>Alto Impacto / Baja Viabilidad</h5>
+                                        <p class="quadrant-description">Proyectos estratégicos - Planeación a mediano plazo</p>
+                                        <div class="idea-cards-container">
+                                            <div class="draggable-idea">Arrastre ideas aquí...</div>
+                                        </div>
+                                    </div>
+                                    <div class="matrix-quadrant low-impact-high-feasibility">
+                                        <h5>Bajo Impacto / Alta Viabilidad</h5>
+                                        <p class="quadrant-description">Mejoras incrementales - Recursos limitados</p>
+                                        <div class="idea-cards-container">
+                                            <div class="draggable-idea">Arrastre ideas aquí...</div>
+                                        </div>
+                                    </div>
+                                    <div class="matrix-quadrant low-impact-low-feasibility">
+                                        <h5>Bajo Impacto / Baja Viabilidad</h5>
+                                        <p class="quadrant-description">Descartar o reconsiderar radicalmente</p>
+                                        <div class="idea-cards-container">
+                                            <div class="draggable-idea">Arrastre ideas aquí...</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="ideas-bank">
+                                    <h5>Banco de Ideas</h5>
+                                    <div class="draggable-ideas-list">
+                                        <div class="draggable-idea movable">Transcripción automática de audiencias</div>
+                                        <div class="draggable-idea movable">Asistente virtual multilingüe para ciudadanos</div>
+                                        <div class="draggable-idea movable">Plataforma de microlearning adaptativo</div>
+                                        <div class="draggable-idea movable">Sistema de predicción de carga de casos</div>
+                                        <div class="draggable-idea movable">Chatbot para consulta de expedientes</div>
+                                    </div>
+                                    <div class="idea-input-container">
+                                        <input type="text" class="idea-input" placeholder="Agregar nueva idea...">
+                                        <button class="btn btn-primary btn-sm">+</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="workshop-navigation">
+                                <button @click="activeStep = 1" class="btn btn-outline">Anterior</button>
+                                <button @click="activeStep = 3" class="btn btn-primary">Continuar</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Paso 3: Prototipado -->
+                        <div x-show="activeStep === 3" class="workshop-step animate-fade-in">
+                            <h4>Paso 3: Diseño Conceptual</h4>
+                            <p class="step-description">Desarrolle un concepto básico para su idea priorizada, respondiendo preguntas clave.</p>
+                            
+                            <div class="concept-canvas">
+                                <div class="concept-header">
+                                    <input type="text" class="concept-title-input" placeholder="Título del Proyecto...">
+                                </div>
+                                
+                                <div class="concept-sections">
+                                    <div class="concept-section">
+                                        <div class="section-header">
+                                            <div class="section-icon"><i class="fas fa-bullseye"></i></div>
+                                            <h5>Objetivo Principal</h5>
+                                        </div>
+                                        <textarea class="concept-textarea" placeholder="¿Qué problema específico resuelve este proyecto?"></textarea>
+                                    </div>
+                                    
+                                    <div class="concept-section">
+                                        <div class="section-header">
+                                            <div class="section-icon"><i class="fas fa-users"></i></div>
+                                            <h5>Usuarios Beneficiados</h5>
+                                        </div>
+                                        <textarea class="concept-textarea" placeholder="¿Quiénes son los usuarios principales y qué beneficios obtendrán?"></textarea>
+                                    </div>
+                                    
+                                    <div class="concept-section">
+                                        <div class="section-header">
+                                            <div class="section-icon"><i class="fas fa-cogs"></i></div>
+                                            <h5>Funcionalidades Clave</h5>
+                                        </div>
+                                        <textarea class="concept-textarea" placeholder="¿Qué capacidades específicas tendrá la solución?"></textarea>
+                                    </div>
+                                    
+                                    <div class="concept-section">
+                                        <div class="section-header">
+                                            <div class="section-icon"><i class="fas fa-chart-line"></i></div>
+                                            <h5>Métricas de Éxito</h5>
+                                        </div>
+                                        <textarea class="concept-textarea" placeholder="¿Cómo medirá el éxito del proyecto?"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="sketch-container">
+                                <h5><i class="fas fa-pencil-alt"></i> Boceto Visual (opcional)</h5>
+                                <div class="sketch-area">
+                                    <p class="sketch-placeholder">Esta sería un área de dibujo para esbozar interfaces o flujos</p>
+                                </div>
+                            </div>
+                            
+                            <div class="workshop-navigation">
+                                <button @click="activeStep = 2" class="btn btn-outline">Anterior</button>
+                                <button @click="activeStep = 4" class="btn btn-primary">Continuar</button>
+                            </div>
+                        </div>
+                        
+                        <!-- Paso 4: Planificación -->
+                        <div x-show="activeStep === 4" class="workshop-step animate-fade-in">
+                            <h4>Paso 4: Plan de Implementación</h4>
+                            <p class="step-description">Desarrolle un plan escalonado realista para implementar su concepto.</p>
+                            
+                            <div class="implementation-form">
+                                <div class="form-section">
+                                    <h5>Fases de Implementación</h5>
+                                    <div class="phase-boxes">
+                                        <div class="phase-box">
+                                            <div class="phase-header">
+                                                <h6>Fase 1: Piloto / MVP</h6>
+                                                <input type="text" class="time-input" placeholder="Duración...">
+                                            </div>
+                                            <textarea class="phase-textarea" placeholder="Alcance y objetivos de la fase inicial..."></textarea>
+                                        </div>
+                                        <div class="phase-arrow"><i class="fas fa-arrow-right"></i></div>
+                                        <div class="phase-box">
+                                            <div class="phase-header">
+                                                <h6>Fase 2: Ampliación</h6>
+                                                <input type="text" class="time-input" placeholder="Duración...">
+                                            </div>
+                                            <textarea class="phase-textarea" placeholder="Expansión y mejoras basadas en aprendizajes..."></textarea>
+                                        </div>
+                                        <div class="phase-arrow"><i class="fas fa-arrow-right"></i></div>
+                                        <div class="phase-box">
+                                            <div class="phase-header">
+                                                <h6>Fase 3: Consolidación</h6>
+                                                <input type="text" class="time-input" placeholder="Duración...">
+                                            </div>
+                                            <textarea class="phase-textarea" placeholder="Escalamiento completo y optimización..."></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-section resources">
+                                    <h5>Recursos Necesarios</h5>
+                                    <div class="resource-categories">
+                                        <div class="resource-category">
+                                            <h6><i class="fas fa-users"></i> Equipo y Capacidades</h6>
+                                            <textarea class="resource-textarea" placeholder="Personal, habilidades y capacitación requerida..."></textarea>
+                                        </div>
+                                        <div class="resource-category">
+                                            <h6><i class="fas fa-server"></i> Tecnología e Infraestructura</h6>
+                                            <textarea class="resource-textarea" placeholder="Hardware, software, plataformas, integraciones..."></textarea>
+                                        </div>
+                                        <div class="resource-category">
+                                            <h6><i class="fas fa-dollar-sign"></i> Presupuesto Estimado</h6>
+                                            <div class="budget-inputs">
+                                                <div class="budget-item">
+                                                    <label>Piloto / MVP</label>
+                                                    <input type="text" placeholder="Monto...">
+                                                </div>
+                                                <div class="budget-item">
+                                                    <label>Fase completa</label>
+                                                    <input type="text" placeholder="Monto...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-section risks">
+                                    <h5>Riesgos y Mitigación</h5>
+                                    <div class="risks-table">
+                                        <div class="risks-header">
+                                            <div class="risk-cell">Riesgo Potencial</div>
+                                            <div class="impact-cell">Impacto</div>
+                                            <div class="strategy-cell">Estrategia de Mitigación</div>
+                                        </div>
+                                        <div class="risk-row">
+                                            <div class="risk-cell">
+                                                <input type="text" placeholder="Describa el riesgo...">
+                                            </div>
+                                            <div class="impact-cell">
+                                                <select>
+                                                    <option>Alto</option>
+                                                    <option>Medio</option>
+                                                    <option>Bajo</option>
+                                                </select>
+                                            </div>
+                                            <div class="strategy-cell">
+                                                <input type="text" placeholder="Estrategia de mitigación...">
+                                            </div>
+                                        </div>
+                                        <div class="risk-row">
+                                            <div class="risk-cell">
+                                                <input type="text" placeholder="Describa el riesgo...">
+                                            </div>
+                                            <div class="impact-cell">
+                                                <select>
+                                                    <option>Alto</option>
+                                                    <option>Medio</option>
+                                                    <option>Bajo</option>
+                                                </select>
+                                            </div>
+                                            <div class="strategy-cell">
+                                                <input type="text" placeholder="Estrategia de mitigación...">
+                                            </div>
+                                        </div>
+                                        <button class="add-risk-btn"><i class="fas fa-plus"></i> Agregar riesgo</button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="workshop-navigation">
+                                <button @click="activeStep = 3" class="btn btn-outline">Anterior</button>
+                                <button class="btn btn-primary">Finalizar y Guardar Plan</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-card resource-links">
+                    <h4><i class="fas fa-external-link-alt"></i> Recursos para el taller</h4>
+                    <div class="resources-grid">
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-download"></i>
+                            <div>
+                                <h5>Plantillas de trabajo</h5>
+                                <span>Documentos editables</span>
+                            </div>
+                        </a>
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-file-pdf"></i>
+                            <div>
+                                <h5>Guía de Facilitación</h5>
+                                <span>Para conducir este taller en equipo</span>
+                            </div>
+                        </a>
+                        <a href="#" class="resource-item">
+                            <i class="fas fa-clipboard-check"></i>
+                            <div>
+                                <h5>Checklist de Implementación</h5>
+                                <span>Para seguimiento postaller</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación entre módulos -->
+    <div class="module-navigation">
+        <a href="#module3" class="nav-prev" @click="activeModule = 'module3'">
+            <i class="fas fa-arrow-left"></i> Módulo anterior
+        </a>
+        <a href="#" class="nav-next" @click="activeModule = 'home'">
+            Volver al inicio <i class="fas fa-home"></i>
+        </a>
+    </div>
+</section>

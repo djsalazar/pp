@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taller de Tendencias y Herramientas Educativas en la Era Digital</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto+Slab:wght@400;700&display=swap');
+
+        :root {
+            --primary-deep-blue: #0B132B; /* Azul noche profundo */
+            --primary-blue: #1C2541;    /* Azul oscuro */
+            --secondary-teal: #3A506B;   /* Azul acero/teal oscuro */
+            --accent-aqua: #5BC0BE;     /* Aguamarina brillante */
+            --accent-light-aqua: #6FFFE9;/* Aguamarina muy claro/casi neón */
+            --neutral-light: #F0F3F5;   /* Gris muy claro/casi blanco */
+            --neutral-medium: #CED4DA;  /* Gris claro */
+            --text-dark: #0B132B;       /* Texto principal oscuro */
+            --text-light: #FFFFFF;
+            --text-subtle: #576C84;     /* Texto secundario, más suave */
+            --success-color: #28a745;
+            --info-color: #17a2b8;
+
+            --card-shadow: 0 8px 25px rgba(28, 37, 65, 0.1);
+            --card-hover-shadow: 0 12px 35px rgba(28, 37, 65, 0.2);
+            --border-radius: 12px;
+            --transition-speed: 0.3s ease-in-out;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--neutral-light);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 25px 0;
+        }
+
+        header, footer {
+            background: linear-gradient(135deg, var(--primary-deep-blue), var(--primary-blue));
+            color: var(--text-light);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        header p, footer p {
+            font-size: 1.15rem;
+            font-weight: 300;
+        }
+        footer p { font-size: 1rem;}
+        footer small { font-size: 0.85rem; opacity: 0.8;}
+
+        main {
+            padding: 40px 0;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            padding: 35px;
+            background-color: var(--text-light);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+        }
+
+        .section-title {
+            font-family: 'Roboto Slab', serif;
+            font-size: 2.2rem;
+            color: var(--primary-deep-blue);
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--accent-aqua), var(--accent-light-aqua));
+            border-radius: 3px;
+        }
+        
+        /* Tabs for Modules */
+        .tabs-container {
+            display: flex;
+            margin-bottom: 25px;
+            border-bottom: 2px solid var(--neutral-medium);
+        }
+        .tab-button {
+            padding: 15px 25px;
+            cursor: pointer;
+            background-color: transparent;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--secondary-teal);
+            transition: all var(--transition-speed);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px; /* Align with container border */
+        }
+        .tab-button:hover {
+            color: var(--primary-blue);
+        }
+        .tab-button.active {
+            color: var(--primary-deep-blue);
+            border-bottom-color: var(--accent-aqua);
+        }
+        .tab-content {
+            display: none;
+            padding: 20px 5px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .tab-content h4 {
+            font-family: 'Roboto Slab', serif;
+            color: var(--primary-blue);
+            font-size: 1.4rem;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+        .tab-content ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+        .tab-content li { margin-bottom: 8px; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background-color: var(--text-light);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: left; /* Changed for more content */
+            transition: all var(--transition-speed);
+            border: 1px solid var(--neutral-medium);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 18px;
+            color: var(--accent-aqua);
+            text-align: center;
+        }
+        .card:hover .card-icon {
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            font-family: 'Roboto Slab', serif;
+            font-size: 1.6rem;
+            color: var(--primary-deep-blue);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: var(--text-subtle);
+            margin-bottom: 20px;
+            flex-grow: 1; /* Pushes button to bottom */
+        }
+        .card ul { margin-left: 20px; margin-bottom: 20px; color: var(--text-subtle); }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 30px;
+            background: linear-gradient(90deg, var(--accent-aqua), var(--accent-light-aqua));
+            color: var(--primary-deep-blue);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all var(--transition-speed);
+            border: none;
+            box-shadow: 0 4px 12px rgba(91,192,190,0.3);
+            align-self: center; /* Aligns button in card */
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 18px rgba(91,192,190,0.5);
+        }
+        .btn.btn-secondary {
+            background: var(--secondary-teal);
+            color: var(--text-light);
+            box-shadow: 0 4px 12px rgba(58,80,107,0.3);
+        }
+        .btn.btn-secondary:hover {
+            box-shadow: 0 6px 18px rgba(58,80,107,0.5);
+            background: var(--primary-blue);
+        }
+
+        .prompt-example {
+            background-color: var(--primary-deep-blue);
+            color: var(--accent-light-aqua);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin: 15px 0;
+            font-family: 'Roboto Mono', monospace; /* Good for code/prompts */
+            font-size: 0.95rem;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        .prompt-example code { white-space: pre-wrap; }
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--accent-aqua);
+            color: var(--primary-deep-blue);
+            border: none;
+            padding: 6px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background-color var(--transition-speed);
+        }
+        .copy-btn:hover { background-color: var(--accent-light-aqua); }
+        .copy-btn.copied { background-color: var(--success-color); color: var(--text-light); }
+
+        .diagram-container {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #e7f6f5;
+            border-radius: var(--border-radius);
+            border: 1px dashed var(--accent-aqua);
+        }
+        .diagram-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.6);
+            animation: fadeInModal 0.3s;
+        }
+        .modal-content {
+            background-color: var(--neutral-light);
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            width: 80%;
+            max-width: 700px;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideInModal 0.4s;
+        }
+        .close-btn {
+            color: var(--text-subtle);
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color var(--transition-speed);
+        }
+        .close-btn:hover { color: var(--primary-deep-blue); }
+        .modal-title {
+            font-family: 'Roboto Slab', serif;
+            color: var(--primary-deep-blue);
+            margin-bottom: 20px;
+        }
+        @keyframes fadeInModal { from {opacity: 0;} to {opacity: 1;} }
+        @keyframes slideInModal { from {transform: translateY(-50px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            .section-title { font-size: 1.8rem; }
+            .card h3 { font-size: 1.4rem; }
+            .tabs-container { flex-direction: column; }
+            .tab-button { width: 100%; text-align: left; border-bottom: 1px solid var(--neutral-medium); }
+            .tab-button.active { border-bottom-color: var(--accent-aqua); }
+            .modal-content { width: 90%; margin: 15% auto;}
+        }
+
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Taller de Tendencias y Herramientas Educativas en la Era Digital</h1>
+            <p>David J. Salazar PNUD | UNV</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <section class="section" id="welcome">
+                <h2 class="section-title">Transformando la Educación y la Práctica Judicial con IA</h2>
+                <p style="text-align:center; font-size: 1.1rem; color: var(--text-subtle); max-width:800px; margin:0 auto 30px auto;">
+                    Bienvenidos a una jornada de descubrimiento donde exploraremos el poder de la Inteligencia Artificial para innovar en la enseñanza jurídica y optimizar la labor judicial. Analizaremos herramientas de vanguardia, casos prácticos y estrategias para integrar estas tecnologías de manera efectiva y ética.
+                </p>
+                <div style="text-align:center;">
+                    <a href="#modules-intro" class="btn">Explorar Módulos</a>
+                </div>
+            </section>
+
+            <section class="section" id="modules-intro">
+                <h2 class="section-title">Contenido Detallado del Taller</h2>
+                <p style="text-align:center; font-size: 1.1rem; color: var(--text-subtle); max-width:800px; margin:0 auto 30px auto;">
+                    Cada módulo está diseñado para proporcionar conocimientos teóricos y habilidades prácticas. Haz clic en las pestañas para descubrir los conceptos, ejemplos y herramientas que abordaremos.
+                </p>
+            </section>
+
+            <section class="section module-section">
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <i class="fas fa-microchip fa-3x" style="color: var(--primary-blue); margin-right: 20px;"></i>
+                    <h3 style="font-family:'Roboto Slab', serif; font-size: 1.8rem; color: var(--primary-blue);">Módulo 1: IA en el Contexto Legal y Educativo</h3>
+                </div>
+                <div class="tabs-container">
+                    <button class="tab-button active" onclick="openTab(event, 'mod1-conceptos')">Conceptos Clave</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod1-aplicaciones')">Aplicaciones</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod1-etica')">Ética y Desafíos</button>
+                </div>
+
+                <div id="mod1-conceptos" class="tab-content active">
+                    <h4>¿Qué es la Inteligencia Artificial?</h4>
+                    <p>La Inteligencia Artificial (IA) se refiere a la simulación de procesos de inteligencia humana por parte de máquinas, especialmente sistemas informáticos. Estos procesos incluyen el aprendizaje, el razonamiento, la resolución de problemas, la percepción, la comprensión del lenguaje y la toma de decisiones.</p>
+                    
+                    <h4>Subcampos Relevantes:</h4>
+                    <ul>
+                        <li><strong>IA Generativa (GenAI):</strong> Tipo de IA capaz de crear contenido nuevo y original (texto, imágenes, audio, código) a partir de los datos con los que fue entrenada. <em>Ejemplo: ChatGPT generando un borrador de correo electrónico.</em></li>
+                        <li><strong>Procesamiento del Lenguaje Natural (NLP):</strong> Permite a las máquinas comprender, interpretar y generar lenguaje humano. <em>Ejemplo: Un asistente virtual entendiendo tus comandos de voz.</em></li>
+                        <li><strong>Aprendizaje Automático (Machine Learning):</strong> Subcampo de la IA que permite a los sistemas aprender de los datos sin ser programados explícitamente.</li>
+                    </ul>
+                    <div class="diagram-container">
+                        <h5 style="color: var(--primary-blue); margin-bottom:10px;">Diagrama: Campos de la IA</h5>
+                        <svg width="300" height="200" viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="100" y="10" width="100" height="40" rx="5" fill="#5BC0BE" />
+                            <text x="150" y="35" font-family="Montserrat" font-size="12" fill="#0B132B" text-anchor="middle">Inteligencia Artificial</text>
+                            <line x1="150" y1="50" x2="150" y2="70" stroke="#3A506B" stroke-width="2"/>
+                            <line x1="70" y1="70" x2="230" y2="70" stroke="#3A506B" stroke-width="2"/>
+                            
+                            <rect x="20" y="80" width="100" height="30" rx="5" fill="#80CBC4" />
+                            <text x="70" y="100" font-family="Montserrat" font-size="10" fill="#0B132B" text-anchor="middle">Machine Learning</text>
+                            <line x1="70" y1="70" x2="70" y2="80" stroke="#3A506B" stroke-width="2"/>
+                            
+                            <rect x="170" y="80" width="100" height="30" rx="5" fill="#80CBC4" />
+                            <text x="220" y="100" font-family="Montserrat" font-size="10" fill="#0B132B" text-anchor="middle">NLP</text>
+                            <line x1="220" y1="70" x2="220" y2="80" stroke="#3A506B" stroke-width="2"/>
+                            
+                            <rect x="95" y="130" width="110" height="30" rx="5" fill="#A2D5D1" />
+                            <text x="150" y="150" font-family="Montserrat" font-size="10" fill="#0B132B" text-anchor="middle">IA Generativa (GenAI)</text>
+                            <line x1="150" y1="120" x2="150" y2="130" stroke="#3A506B" stroke-width="2"/>
+                             <line x1="70" y1="110" x2="150" y2="120" stroke="#3A506B" stroke-width="1" stroke-dasharray="2 2"/>
+                             <line x1="220" y1="110" x2="150" y2="120" stroke="#3A506B" stroke-width="1" stroke-dasharray="2 2"/>
+                        </svg>
+                         <button class="btn btn-secondary" style="font-size:0.8rem; padding: 8px 15px; margin-top:10px;" onclick="openModal('modal-ia-fields')">Ver Detalle Diagrama</button>
+                    </div>
+                </div>
+
+                <div id="mod1-aplicaciones" class="tab-content">
+                    <h4>Potencial en el Sector Justicia:</h4>
+                    <ul>
+                        <li><strong>Análisis de Jurisprudencia:</strong> Identificar patrones, tendencias y precedentes relevantes en grandes volúmenes de sentencias.</li>
+                        <li><strong>Asistencia en Redacción Legal:</strong> Generar borradores de documentos, resumir textos, mejorar la claridad.</li>
+                        <li><strong>Investigación Jurídica Acelerada:</strong> Encontrar información específica en bases de datos legales y doctrina de forma más eficiente.</li>
+                        <li><strong>Detección de Anomalías:</strong> (Potencial futuro) Identificar posibles fraudes o inconsistencias en documentación.</li>
+                        <li><strong>Soporte a Decisiones:</strong> (Con cautela) Ofrecer información estructurada para ayudar en la toma de decisiones.</li>
+                    </ul>
+                    <h4>En la Educación Jurídica:</h4>
+                    <ul>
+                        <li><strong>Tutores Virtuales Personalizados:</strong> Asistentes de IA que pueden responder preguntas de estudiantes, ofrecer explicaciones y guiar el aprendizaje.</li>
+                        <li><strong>Creación de Material Didáctico Interactivo:</strong> Generar quizzes, escenarios, simulaciones.</li>
+                        <li><strong>Feedback Automatizado (formativo):</strong> Proporcionar retroalimentación inicial sobre trabajos escritos o argumentaciones.</li>
+                        <li><strong>Análisis de Desempeño Estudiantil:</strong> Identificar áreas donde los estudiantes necesitan más apoyo.</li>
+                    </ul>
+                </div>
+
+                <div id="mod1-etica" class="tab-content">
+                    <h4>Consideraciones Éticas Clave:</h4>
+                    <ul>
+                        <li><strong>Sesgos Algorítmicos:</strong> La IA puede perpetuar o amplificar sesgos presentes en los datos de entrenamiento, llevando a resultados injustos.</li>
+                        <li><strong>Transparencia y Explicabilidad (XAI):</strong> La dificultad de entender cómo algunos modelos de IA llegan a sus conclusiones ("caja negra").</li>
+                        <li><strong>Privacidad y Protección de Datos:</strong> El manejo de información sensible y confidencial en sistemas de IA.</li>
+                        <li><strong>Responsabilidad:</strong> ¿Quién es responsable si un sistema de IA comete un error con consecuencias legales?</li>
+                        <li><strong>Impacto en el Empleo:</strong> La automatización de tareas y su efecto en los roles profesionales.</li>
+                        <li><strong>Autenticidad y Desinformación:</strong> El riesgo de deepfakes y contenido generado por IA para engañar.</li>
+                        <li><strong>Acceso y Equidad:</strong> Asegurar que los beneficios de la IA no aumenten la brecha digital.</li>
+                    </ul>
+                     <p>Es crucial abordar estos desafíos con un enfoque centrado en el ser humano, regulaciones adecuadas y un desarrollo ético de la tecnología.</p>
+                </div>
+            </section>
+
+            <section class="section module-section">
+                 <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <i class="fas fa-book-reader fa-3x" style="color: var(--primary-blue); margin-right: 20px;"></i>
+                    <h3 style="font-family:'Roboto Slab', serif; font-size: 1.8rem; color: var(--primary-blue);">Módulo 2: Google NotebookLM – Tu Asistente de Investigación</h3>
+                </div>
+                <div class="tabs-container">
+                    <button class="tab-button active" onclick="openTab(event, 'mod2-concepto')">¿Qué es NotebookLM?</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod2-uso')">Casos de Uso</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod2-prompts')">Preguntas Efectivas</button>
+                </div>
+                <div id="mod2-concepto" class="tab-content active">
+                    <h4>Definición:</h4>
+                    <p>Google NotebookLM es una herramienta de investigación y escritura basada en IA que te permite "conversar" con tus propios documentos. Cargas tus fuentes (PDFs, Google Docs, texto copiado) y NotebookLM las utiliza como base de conocimiento para responder tus preguntas, generar resúmenes, crear esquemas y ayudarte a encontrar conexiones.</p>
+                    <h4>Características Principales:</h4>
+                    <ul>
+                        <li><strong>Basado en tus Fuentes:</strong> Las respuestas se fundamentan en el contenido que tú proporcionas, minimizando la "alucinación" o invención de información.</li>
+                        <li><strong>Citas Automáticas:</strong> Indica de qué parte de tus documentos extrae la información.</li>
+                        <li><strong>Generación de Contenido:</strong> Resúmenes, esquemas, listas, explicaciones.</li>
+                        <li><strong>Organización:</strong> Permite crear múltiples "notebooks" para diferentes proyectos.</li>
+                    </ul>
+                </div>
+                <div id="mod2-uso" class="tab-content">
+                    <h4>Ejemplo: Análisis de Expediente Judicial (Simplificado)</h4>
+                    <ol>
+                        <li><strong>Carga de Documentos:</strong> Sube al NotebookLM la demanda, contestación, pruebas documentales clave (anonimizadas) de un caso.</li>
+                        <li><strong>Preguntas Iniciales:</strong>
+                            <ul>
+                                <li>"Resume los hechos principales según la demanda."</li>
+                                <li>"¿Cuáles son los argumentos centrales de la parte demandada?"</li>
+                                <li>"Lista las pruebas documentales aportadas por el demandante."</li>
+                            </ul>
+                        </li>
+                        <li><strong>Profundización:</strong>
+                            <ul>
+                                <li>"Compara los hechos narrados por ambas partes e identifica las principales discrepancias."</li>
+                                <li>"¿Qué artículos de ley se citan con mayor frecuencia en estos documentos?"</li>
+                                <li>"Genera una cronología de los eventos basada en todos los documentos."</li>
+                            </ul>
+                        </li>
+                        <li><strong>Síntesis:</strong> "Crea un esquema de los puntos clave que debo considerar para preparar la audiencia de [tipo de audiencia]."</li>
+                    </ol>
+                    <h4>Otros Casos de Uso:</h4>
+                    <ul>
+                        <li>Preparación de ponencias o artículos académicos.</li>
+                        <li>Estudio de nueva legislación o doctrina compleja.</li>
+                        <li>Creación de guías de estudio personalizadas.</li>
+                    </ul>
+                </div>
+                 <div id="mod2-prompts" class="tab-content">
+                    <h4>Formulando Preguntas Efectivas en NotebookLM:</h4>
+                    <p>La clave es ser específico y referenciar el contexto de tus documentos.</p>
+                    <div class="prompt-example">
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'Basándome en el documento \'Sentencia_Amparo_2023.pdf\', ¿cuáles fueron los tres principales derechos que la Corte consideró vulnerados y por qué? Explica cada uno brevemente.')">Copiar</button>
+                        <code>"Basándome en el documento 'Sentencia_Amparo_2023.pdf', ¿cuáles fueron los tres principales derechos que la Corte consideró vulnerados y por qué? Explica cada uno brevemente."</code>
+                    </div>
+                     <div class="prompt-example">
+                        <button class="copy-btn" onclick="copyToClipboard(this, 'Compara la definición de \'debido proceso\' que se encuentra en el \'Manual_Derecho_Procesal.pdf\' con los ejemplos prácticos de su aplicación en las \'Sentencias_Casacion_Penal_2024.pdf\'. ¿Existen diferencias notables?')">Copiar</button>
+                        <code>"Compara la definición de 'debido proceso' que se encuentra en el 'Manual_Derecho_Procesal.pdf' con los ejemplos prácticos de su aplicación en las 'Sentencias_Casacion_Penal_2024.pdf'. ¿Existen diferencias notables?"</code>
+                    </div>
+                     <p><strong>Consejo:</strong> En lugar de preguntar "¿Qué es X?", si tienes un documento específico, pregunta "Según [nombre_del_documento.pdf], ¿qué es X y cómo se aplica en el contexto Y?".</p>
+                </div>
+            </section>
+
+
+            <section class="section module-section">
+                <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <i class="fas fa-cogs fa-3x" style="color: var(--primary-blue); margin-right: 20px;"></i>
+                    <h3 style="font-family:'Roboto Slab', serif; font-size: 1.8rem; color: var(--primary-blue);">Módulo 3: Google Gemini AI Studio – Creación e Innovación</h3>
+                </div>
+                 <div class="tabs-container">
+                    <button class="tab-button active" onclick="openTab(event, 'mod3-concepto')">¿Qué es Gemini AI Studio?</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod3-prompting')">Prompt Engineering</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod3-ejemplos')">Ejemplos de Prompts</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod3-params')">Parámetros Clave</button>
+                </div>
+
+                <div id="mod3-concepto" class="tab-content active">
+                    <h4>Definición:</h4>
+                    <p>Google Gemini AI Studio (anteriormente MakerSuite) es una herramienta basada en web que permite a desarrolladores y creadores prototipar rápidamente con los modelos de lenguaje grandes (LLM) de la familia Gemini. Ofrece una interfaz para experimentar con prompts, ajustar parámetros y obtener código para integrar estos modelos en aplicaciones.</p>
+                    <h4>Diferencia con la app Gemini (consumidor):</h4>
+                    <p>Mientras la app Gemini es una interfaz de chat para usuarios finales, Gemini AI Studio es una plataforma para desarrolladores y "power users" que desean un control más granular sobre el modelo, acceso a diferentes versiones (Pro, Flash), y la capacidad de construir sobre ellos.</p>
+                </div>
+
+                <div id="mod3-prompting" class="tab-content">
+                    <h4>Prompt Engineering: El Arte de Preguntar</h4>
+                    <p>Es el proceso de diseñar y refinar cuidadosamente las entradas (prompts) que se le dan a un modelo de IA generativa para obtener los resultados deseados. Un buen prompt es claro, conciso, contextualizado y específico.</p>
+                    <h4>Consejos para un Buen Prompt:</h4>
+                    <ul>
+                        <li><strong>Rol (Persona):</strong> "Actúa como un experto en derecho procesal penal guatemalteco..."</li>
+                        <li><strong>Contexto:</strong> Proporciona información de fondo relevante.</li>
+                        <li><strong>Tarea Específica:</strong> Sé claro sobre lo que quieres que haga (generar, resumir, traducir, codificar, etc.).</li>
+                        <li><strong>Formato de Salida:</strong> Especifica si quieres una lista, tabla, párrafo, JSON, HTML, etc.</li>
+                        <li><strong>Restricciones/Guías:</strong> "Evita el lenguaje overly técnico", "limita la respuesta a 200 palabras", "usa un tono formal".</li>
+                        <li><strong>Iteración:</strong> Rara vez el primer prompt es perfecto. Prueba, analiza la salida y refina.</li>
+                    </ul>
+                    <div class="diagram-container">
+                        <h5 style="color: var(--primary-blue); margin-bottom:10px;">Diagrama: Ciclo de Prompting</h5>
+                        <svg width="400" height="150" viewBox="0 0 450 150" xmlns="http://www.w3.org/2000/svg">
+                            <defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#3A506B" /></marker></defs>
+                            <g font-family="Montserrat" font-size="12" text-anchor="middle">
+                                <rect x="10" y="55" width="80" height="40" rx="5" fill="#5BC0BE"/><text x="50" y="80" fill="#0B132B">Idea</text>
+                                <line x1="90" y1="75" x2="110" y2="75" stroke="#3A506B" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="110" y="55" width="80" height="40" rx="5" fill="#6FFFE9"/><text x="150" y="80" fill="#0B132B">Prompt</text>
+                                <line x1="190" y1="75" x2="210" y2="75" stroke="#3A506B" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="210" y="55" width="80" height="40" rx="5" fill="#5BC0BE"/><text x="250" y="80" fill="#0B132B">Modelo IA</text>
+                                <line x1="290" y1="75" x2="310" y2="75" stroke="#3A506B" stroke-width="2" marker-end="url(#arrow)"/>
+                                <rect x="310" y="55" width="80" height="40" rx="5" fill="#6FFFE9"/><text x="350" y="80" fill="#0B132B">Respuesta</text>
+                                <path d="M 350 95 Q 350 125, 150 125 L 150 95" stroke="#3A506B" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+                                <text x="250" y="135" fill="#3A506B" font-size="10">Refinamiento & Iteración</text>
+                            </g>
+                        </svg>
+                        <button class="btn btn-secondary" style="font-size:0.8rem; padding: 8px 15px; margin-top:10px;" onclick="openModal('modal-prompt-cycle')">Ver Detalle Diagrama</button>
+                    </div>
+                </div>
+
+                <div id="mod3-ejemplos" class="tab-content">
+                    <h4>Generar Borrador de Argumento:</h4>
+                    <div class="prompt-example">
+                         <button class="copy-btn" onclick="copyToClipboard(this, 'Actúa como un abogado defensor en Guatemala. Estoy preparando un caso de apelación por una sentencia condenatoria por el delito de estafa. La sentencia de primera instancia no valoró adecuadamente la prueba testimonial X que demuestra la ausencia de engaño. Genera un borrador de tres párrafos para la sección de agravios de mi recurso, enfocándote en la errónea valoración de dicha prueba y su impacto en la decisión.')">Copiar</button>
+                        <code>Actúa como un abogado defensor en Guatemala. Estoy preparando un caso de apelación por una sentencia condenatoria por el delito de estafa. La sentencia de primera instancia no valoró adecuadamente la prueba testimonial X que demuestra la ausencia de engaño. Genera un borrador de tres párrafos para la sección de agravios de mi recurso, enfocándote en la errónea valoración de dicha prueba y su impacto en la decisión.</code>
+                    </div>
+                    <h4>Simplificar Texto Legal:</h4>
+                    <div class="prompt-example">
+                         <button class="copy-btn" onclick="copyToClipboard(this, 'Toma el siguiente extracto del Artículo 14 de la Constitución de Guatemala referente a la presunción de inocencia y explícalo en lenguaje sencillo, como si se lo estuvieras explicando a una persona sin formación jurídica que necesita entender sus derechos básicos: [pegar aquí el texto del artículo]. Asegúrate de destacar las implicaciones prácticas de este derecho.')">Copiar</button>
+                        <code>Toma el siguiente extracto del Artículo 14 de la Constitución de Guatemala referente a la presunción de inocencia y explícalo en lenguaje sencillo, como si se lo estuvieras explicando a una persona sin formación jurídica que necesita entender sus derechos básicos: [pegar aquí el texto del artículo]. Asegúrate de destacar las implicaciones prácticas de este derecho.</code>
+                    </div>
+                    <h4>Generar Código HTML para Recurso Educativo:</h4>
+                    <div class="prompt-example">
+                         <button class="copy-btn" onclick="copyToClipboard(this, 'Genera el código HTML, CSS (integrado en <style>) y JavaScript (integrado en <script>) para un quiz interactivo de 3 preguntas sobre los \'Recursos en el Proceso Penal Guatemalteco\'. Cada pregunta debe tener 3 opciones de respuesta (A, B, C). Al seleccionar una respuesta y hacer clic en un botón \'Verificar\', debe indicar si es correcta o incorrecta y mostrar una breve explicación. El diseño debe ser limpio y usar colores azules y verdes.')">Copiar</button>
+                        <code>Genera el código HTML, CSS (integrado en &lt;style&gt;) y JavaScript (integrado en &lt;script&gt;) para un quiz interactivo de 3 preguntas sobre los 'Recursos en el Proceso Penal Guatemalteco'. Cada pregunta debe tener 3 opciones de respuesta (A, B, C). Al seleccionar una respuesta y hacer clic en un botón 'Verificar', debe indicar si es correcta o incorrecta y mostrar una breve explicación. El diseño debe ser limpio y usar colores azules y verdes.</code>
+                    </div>
+                </div>
+                 <div id="mod3-params" class="tab-content">
+                    <h4>Parámetros Clave en Gemini AI Studio:</h4>
+                    <p>Estos ajustes te permiten controlar la "creatividad" y el tipo de respuesta del modelo:</p>
+                    <ul>
+                        <li><strong>Temperatura (Temperature):</strong>
+                            <ul>
+                                <li>Controla la aleatoriedad de la respuesta.</li>
+                                <li>Valores más altos (ej. 0.8-1.0) generan respuestas más creativas, diversas, pero potencialmente menos precisas o coherentes.</li>
+                                <li>Valores más bajos (ej. 0.1-0.3) producen respuestas más deterministas, enfocadas y predecibles.</li>
+                                <li><em>Para tareas legales precisas, se suele recomendar una temperatura baja.</em></li>
+                            </ul>
+                        </li>
+                        <li><strong>Top-K:</strong>
+                            <ul>
+                                <li>Limita la selección de la siguiente palabra a las K palabras más probables.</li>
+                                <li>Un K más bajo hace la respuesta más predecible y menos divagante.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Top-P (Nucleus Sampling):</strong>
+                            <ul>
+                                <li>Selecciona la siguiente palabra de un conjunto mínimo de palabras cuya probabilidad acumulada supera el valor P.</li>
+                                <li>Ofrece un balance entre creatividad y coherencia. Un P de 0.9 significa que se consideran palabras hasta sumar el 90% de la probabilidad.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Máximo de Tokens de Salida (Max Output Tokens):</strong>
+                            <ul>
+                                <li>Define la longitud máxima de la respuesta generada. Un token es aproximadamente 4 caracteres en inglés.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p><strong>Recomendación:</strong> Empieza con los valores por defecto y ajústalos gradualmente mientras experimentas para ver cómo afectan la salida para tus casos de uso específicos.</p>
+                </div>
+            </section>
+
+            <section class="section module-section">
+                 <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <i class="fas fa-link fa-3x" style="color: var(--primary-blue); margin-right: 20px;"></i>
+                    <h3 style="font-family:'Roboto Slab', serif; font-size: 1.8rem; color: var(--primary-blue);">Módulo 4: Sinergia, Casos Avanzados y Visión de Futuro</h3>
+                </div>
+                 <div class="tabs-container">
+                    <button class="tab-button active" onclick="openTab(event, 'mod4-sinergia')">Sinergia de Herramientas</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod4-escuela')">Para la Escuela Judicial</button>
+                    <button class="tab-button" onclick="openTab(event, 'mod4-futuro')">El Futuro de la IA Legal</button>
+                </div>
+
+                <div id="mod4-sinergia" class="tab-content active">
+                    <h4>Combinando NotebookLM y Gemini AI Studio:</h4>
+                    <p>Estas herramientas pueden potenciarse mutuamente:</p>
+                    <ol>
+                        <li><strong>Investigación Profunda con NotebookLM:</strong> Utiliza NotebookLM para analizar a fondo tus documentos (leyes, expedientes, doctrina), extraer hechos clave, identificar argumentos y generar resúmenes iniciales.</li>
+                        <li><strong>Elaboración Creativa con Gemini AI Studio:</strong>
+                            <ul>
+                                <li>Lleva los resúmenes o puntos clave de NotebookLM a Gemini.</li>
+                                <li>Pídele a Gemini que desarrolle argumentos más elaborados, redacte borradores de secciones específicas de un escrito, o genere diferentes perspectivas sobre un tema basado en la información de NotebookLM.</li>
+                                <li>Utiliza Gemini para crear material didáctico (como quizzes HTML) basado en el contenido analizado en NotebookLM.</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <p><em>Ejemplo: Investigas un tema complejo de casación en NotebookLM con varias sentencias. Luego, usas Gemini para que, basándose en los puntos clave identificados, te ayude a redactar la introducción de un artículo académico o prepare preguntas para un debate simulado.</em></p>
+                </div>
+                <div id="mod4-escuela" class="tab-content">
+                    <h4>Ideas para la Escuela de Estudios Judiciales:</h4>
+                    <ul>
+                        <li><strong>Desarrollo de Repositorios Inteligentes:</strong> Usar NotebookLM para crear bases de conocimiento sobre temas específicos (ej. violencia de género, derecho ambiental) con jurisprudencia y legislación relevante, facilitando la consulta y el estudio.</li>
+                        <li><strong>Creación de Módulos de E-learning Asistidos por IA:</strong>
+                            <ul>
+                                <li>Utilizar Gemini para generar borradores de contenido, scripts para videos educativos, y quizzes interactivos.</li>
+                                <li>Diseñar simulaciones de audiencias donde Gemini actúe como diferentes partes procesales, permitiendo a los jueces practicar en un entorno controlado.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Herramientas de Apoyo para Jueces y Magistrados:</strong>
+                            <ul>
+                                <li>Plantillas de prompts en Gemini AI Studio para tareas comunes (ej. resumir un caso, identificar fundamentos legales, redactar considerandos).</li>
+                                <li>Entrenamiento en "Prompt Engineering" para maximizar la utilidad de la IA.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Análisis de Tendencias para Capacitación:</strong> (Más avanzado) Analizar grandes volúmenes de sentencias (anonimizadas) para identificar áreas donde se requiere mayor capacitación o unificación de criterios.</li>
+                        <li><strong>Plataforma de Preguntas Frecuentes Inteligente:</strong> Un chatbot (potencialmente construido con la API de Gemini) entrenado con documentos de la Escuela para responder dudas comunes.</li>
+                    </ul>
+                </div>
+                 <div id="mod4-futuro" class="tab-content">
+                    <h4>El Futuro de la IA en el Ámbito Legal y Educativo:</h4>
+                    <p>La IA continuará transformando el sector. Algunas tendencias a observar:</p>
+                    <ul>
+                        <li><strong>Mayor Especialización de Modelos:</strong> Modelos de IA entrenados específicamente con grandes corpus de texto legal (LLMs legales).</li>
+                        <li><strong>Mejor Explicabilidad (XAI):</strong> Avances para que los modelos puedan justificar mejor sus "razonamientos".</li>
+                        <li><strong>Integración Nativa en Herramientas Existentes:</strong> IA integrada en procesadores de texto, gestores de casos, plataformas de e-learning.</li>
+                        <li><strong>IA Multimodal más Avanzada:</strong> Capacidad de analizar y generar combinaciones de texto, imagen, audio y video de forma más sofisticada (ej. análisis de lenguaje corporal en videos de audiencias, aunque esto plantea serios desafíos éticos y técnicos).</li>
+                        <li><strong>Democratización del Acceso:</strong> Herramientas más fáciles de usar y accesibles para no programadores.</li>
+                        <li><strong>Debate Ético y Regulatorio Continuo:</strong> Necesidad de marcos legales y éticos robustos para guiar el desarrollo y despliegue de la IA.</li>
+                    </ul>
+                    <p>La clave será la <strong>colaboración humano-IA</strong>, donde la tecnología aumente las capacidades humanas en lugar de reemplazarlas, siempre con supervisión y juicio crítico.</p>
+                </div>
+            </section>
+
+
+            <section class="section" id="interactive-tools">
+                <h2 class="section-title">Herramientas Destacadas</h2>
+                <div class="grid-container">
+                    <div class="card">
+                        <div class="card-icon"><i class="fas fa-brain"></i></div>
+                        <h3>Google NotebookLM</h3>
+                        <p>Tu asistente de investigación personal. Carga tus documentos, haz preguntas y obtén insights basados en tus propias fuentes. Ideal para análisis profundo de textos legales y académicos.</p>
+                        <a href="https://notebooklm.google.com/" target="_blank" class="btn">Explorar NotebookLM</a>
+                    </div>
+                    <div class="card">
+                         <div class="card-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                        <h3>Google Gemini AI Studio</h3>
+                        <p>Experimenta con los potentes modelos Gemini. Genera texto creativo, código, traduce idiomas, y mucho más. Perfecto para prototipar y crear nuevas soluciones con IA.</p>
+                        <a href="https://aistudio.google.com/" target="_blank" class="btn">Probar Gemini AI Studio</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
+                 <h2 class="section-title">¡Manos a la Obra!</h2>
+                 <p style="text-align:center; font-size: 1.1rem; color: var(--text-subtle); max-width:800px; margin:0 auto 30px auto;">
+                    Este taller es solo el comienzo. Te invitamos a explorar estas herramientas, experimentar con tus propios casos de uso y reflexionar sobre cómo la IA puede enriquecer tu labor profesional y la formación en la Escuela de Estudios Judiciales.
+                </p>
+                <div style="text-align:center;">
+                    <button class="btn btn-secondary" onclick="openModal('modal-recursos')"><i class="fas fa-download"></i> Recursos Adicionales</button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Taller de Tendencias y Herramientas Educativas en la Era Digital</p>
+            <p>David J. Salazar PNUD | UNV</p>
+            <p><small>&copy; <span id="currentYear"></span>. Contenido para fines educativos.</small></p>
+        </div>
+    </footer>
+
+    <div id="modal-ia-fields" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-ia-fields')">&times;</span>
+            <h3 class="modal-title">Detalle: Campos de la Inteligencia Artificial</h3>
+            <p>Este diagrama ilustra cómo la Inteligencia Artificial es un campo amplio que engloba diversas disciplinas:</p>
+            <ul>
+                <li><strong>Inteligencia Artificial (IA):</strong> El concepto más general de máquinas que imitan la inteligencia humana.</li>
+                <li><strong>Aprendizaje Automático (Machine Learning):</strong> Sistemas que aprenden de datos. Es un subcampo de la IA.</li>
+                <li><strong>Procesamiento del Lenguaje Natural (NLP):</strong> Capacita a las máquinas para entender y usar el lenguaje humano. Se solapa con el Machine Learning.</li>
+                <li><strong>IA Generativa (GenAI):</strong> Un tipo avanzado, a menudo basado en Deep Learning (una rama del Machine Learning) y NLP, capaz de crear contenido nuevo.</li>
+            </ul>
+            <p>Estas áreas no son mutuamente excluyentes y a menudo se combinan en aplicaciones complejas.</p>
+        </div>
+    </div>
+    
+    <div id="modal-prompt-cycle" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-prompt-cycle')">&times;</span>
+            <h3 class="modal-title">Detalle: Ciclo de Prompting Efectivo</h3>
+            <p>El proceso de obtener resultados óptimos de un modelo de IA generativa es iterativo:</p>
+            <ol>
+                <li><strong>Idea/Necesidad:</strong> Define claramente qué quieres lograr.</li>
+                <li><strong>Prompt Inicial:</strong> Formula tu primera instrucción al modelo.</li>
+                <li><strong>Interacción con el Modelo IA:</strong> El modelo procesa tu prompt.</li>
+                <li><strong>Respuesta/Salida:</strong> El modelo genera un resultado.</li>
+                <li><strong>Análisis y Refinamiento:</strong> Evalúa la respuesta. Si no es la esperada, ajusta el prompt (más específico, diferente formulación, añadiendo contexto o restricciones) y repite el ciclo.</li>
+            </ol>
+            <p>Este ciclo de mejora continua es fundamental en el "Prompt Engineering".</p>
+        </div>
+    </div>
+
+    <div id="modal-recursos" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal('modal-recursos')">&times;</span>
+            <h3 class="modal-title">Recursos Adicionales y Próximos Pasos</h3>
+            <p>Para seguir aprendiendo y explorando:</p>
+            <ul>
+                <li><strong>Documentación Oficial de Google:</strong>
+                    <ul>
+                        <li><a href="https://developers.google.com/machine-learning/resources/intro-to-llms" target="_blank">Introducción a los LLMs (Google)</a></li>
+                        <li><a href="https://ai.google.dev/docs" target="_blank">Documentación de Google AI Studio y Gemini API</a></li>
+                        <li><a href="https://support.google.com/notebooklm" target="_blank">Ayuda de Google NotebookLM</a></li>
+                    </ul>
+                </li>
+                <li><strong>Cursos en Línea (Generales sobre IA):</strong> Plataformas como Coursera, edX, Udemy ofrecen cursos sobre IA, Machine Learning y NLP.</li>
+                <li><strong>Comunidades y Foros:</strong> Busca comunidades en línea de desarrolladores de IA o usuarios de herramientas específicas.</li>
+                <li><strong>Publicaciones y Blogs del Sector Legal Tech:</strong> Mantente al día con las últimas novedades en IA aplicada al derecho.</li>
+            </ul>
+            <h4>Sugerencias para la Escuela Judicial:</h4>
+            <p>Considerar la creación de un pequeño grupo de trabajo o "comunidad de práctica" interna para explorar y compartir experiencias con estas herramientas, desarrollando casos de uso específicos para el Organismo Judicial de Guatemala.</p>
+        </div>
+    </div>
+
+
+    <script>
+        function openTab(event, tabName) {
+            let i, tabcontent, tabbuttons;
+            const parentSection = event.currentTarget.closest('.module-section');
+
+            tabcontent = parentSection.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+                tabcontent[i].classList.remove("active");
+            }
+
+            tabbuttons = parentSection.getElementsByClassName("tab-button");
+            for (i = 0; i < tabbuttons.length; i++) {
+                tabbuttons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).style.display = "block";
+            document.getElementById(tabName).classList.add("active");
+            event.currentTarget.classList.add("active");
+        }
+
+        // Activate the first tab by default for each module on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.module-section').forEach(module => {
+                const firstTabButton = module.querySelector('.tab-button');
+                if (firstTabButton) {
+                    firstTabButton.click(); // Simulate a click to open the first tab
+                }
+            });
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+        });
+        
+        function copyToClipboard(button, textToCopy) {
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                button.textContent = '¡Copiado!';
+                button.classList.add('copied');
+                setTimeout(() => {
+                    button.textContent = 'Copiar';
+                    button.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Error al copiar: ', err);
+                alert("Error al copiar el texto.");
+            });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if(targetElement){
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Modal functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = "block";
+        }
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = "none";
+        }
+        // Close modal if clicked outside of modal-content
+        window.onclick = function(event) {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+
+    </script>
+</body>
+</html>
